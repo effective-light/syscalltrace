@@ -8,11 +8,15 @@
 
 
 int main(int argc, char **argv) {
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <cmd> [args...]", argv[0]);
+        return 1;
+    }
 
     pid_t pid = fork();
     if (!pid) {
         // PTRACE_TRACEME
-        execvp(argv[0], argv);
+        execvp(argv[1], (argv + 1));
         perror("exec");
     } else if (pid > 0) {
         // ptrace
