@@ -55,9 +55,11 @@ int main(int argc, char **argv) {
                         printf("%d()", info.entry.nr);
                         break;
                     case PTRACE_SYSCALL_INFO_EXIT:
-                        printf(" = %ld\n", info.exit.rval);
+                        printf(" = %ld%s\n", info.exit.rval,
+                                info.exit.is_error ? " [ERR]" : "");
                         break;
                     case PTRACE_SYSCALL_INFO_SECCOMP:
+                        printf("%d()", info.seccomp.nr);
                         break;
                     default:
                         break;
