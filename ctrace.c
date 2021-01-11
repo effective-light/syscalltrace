@@ -1,6 +1,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 
 #include <sys/types.h>
@@ -8,6 +9,7 @@
 #include <unistd.h>
 
 #include <sys/ptrace.h>
+#include <sys/syscall.h>
 
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
 
@@ -17,6 +19,24 @@ static long safe_ptrace(enum __ptrace_request request, pid_t pid,
     long ret;
     if ((ret = ptrace(request, pid, addr, data)) == -1) {
         handle_error("ptrace");
+    }
+
+    return ret;
+}
+
+static int parse_syscall(uint64_t nr, uint64_t args[6]) {
+
+    int ret = 1;
+
+    switch (nr) {
+        case SYS_read:
+            printf("read(%ld, %ld)", args[0], args[2]);
+            break;
+        case SYS_write:
+            printf("write(%ld, %ld)", args[0], args[2]);
+            break;
+        default:
+            ret = 0;
     }
 
     return ret;
@@ -52,7 +72,9 @@ int main(int argc, char **argv) {
                 safe_ptrace(PTRACE_GET_SYSCALL_INFO, pid, (void *) size, &info);
                 switch (info.op) {
                     case PTRACE_SYSCALL_INFO_ENTRY:
-                        printf("%d()", info.entry.nr);
+                        if (!parse_syscall(info.entry.nr, info.entry.args)) {
+                            printf("%d()", info.entry.nr);
+                        }
                         break;
                     case PTRACE_SYSCALL_INFO_EXIT:
                         printf(" = %ld%s\n", info.exit.rval,

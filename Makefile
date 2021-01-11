@@ -1,4 +1,4 @@
-FLAGS = -Wextra -O2 -std=gnu99
+FLAGS = -Wextra -O2 -std=gnu99 -g
 
 ctrace: ctrace.o
 	gcc ${FLAGS} -o $@ $^
