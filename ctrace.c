@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -10,6 +11,8 @@
 
 #include <sys/ptrace.h>
 #include <sys/syscall.h>
+
+#define DEFAULT_FORMAT "syscall(%d, ...)"
 
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
 
@@ -24,20 +27,42 @@ static long safe_ptrace(enum __ptrace_request request, pid_t pid,
     return ret;
 }
 
-static int parse_syscall(uint64_t nr, uint64_t args[6]) {
+static char *read_string(uint64_t addr, pid_t pid, size_t size) {
+    char *s = calloc(size + 1, sizeof(char));
+    size_t i = 0;
+    long ret;
+    while (i < size) {
+        ret = safe_ptrace(PTRACE_PEEKDATA, pid, (void *) (addr + i), NULL);
+        memcpy((s + i), &ret, i + sizeof(long) > size ? size - i
+                : sizeof(long));
+
+        i += sizeof(long);
+    }
+
+    s[size] = '\0';
+
+    return s;
+}
+
+static int parse_syscall(uint64_t nr, uint64_t args[6], pid_t pid) {
 
     int ret = 1;
+    char *s = NULL;
 
     switch (nr) {
         case SYS_read:
-            printf("read(%ld, %ld)", args[0], args[2]);
+            s = read_string(args[1], pid, args[2]);
+            printf("read(%ld, \"%s\", %ld)", args[0], s, args[2]);
             break;
         case SYS_write:
-            printf("write(%ld, %ld)", args[0], args[2]);
+            s = read_string(args[1], pid, args[2]);
+            printf("write(%ld, \"%s\", %ld)", args[0], s, args[2]);
             break;
         default:
             ret = 0;
     }
+
+    free(s);
 
     return ret;
 }
@@ -72,8 +97,9 @@ int main(int argc, char **argv) {
                 safe_ptrace(PTRACE_GET_SYSCALL_INFO, pid, (void *) size, &info);
                 switch (info.op) {
                     case PTRACE_SYSCALL_INFO_ENTRY:
-                        if (!parse_syscall(info.entry.nr, info.entry.args)) {
-                            printf("%d()", info.entry.nr);
+                        if (!parse_syscall(info.entry.nr, info.entry.args,
+                                    pid)) {
+                            printf(DEFAULT_FORMAT, info.entry.nr);
                         }
                         break;
                     case PTRACE_SYSCALL_INFO_EXIT:
@@ -81,7 +107,7 @@ int main(int argc, char **argv) {
                                 info.exit.is_error ? " [ERR]" : "");
                         break;
                     case PTRACE_SYSCALL_INFO_SECCOMP:
-                        printf("%d()", info.seccomp.nr);
+                        printf(DEFAULT_FORMAT, info.seccomp.nr);
                         break;
                     default:
                         break;
