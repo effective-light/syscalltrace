@@ -12,6 +12,8 @@
 #include <sys/ptrace.h>
 #include <sys/syscall.h>
 
+#include "ctrace.h"
+
 #define DEFAULT_FORMAT "syscall(%d, ...)"
 
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
@@ -27,7 +29,7 @@ static long safe_ptrace(enum __ptrace_request request, pid_t pid,
     return ret;
 }
 
-static char *read_string(uint64_t addr, pid_t pid, size_t size) {
+static void *read_addr(pid_t pid, uint64_t addr, size_t size) {
     char *s = calloc(size + 1, sizeof(char));
     size_t i = 0;
     long ret;
@@ -41,21 +43,21 @@ static char *read_string(uint64_t addr, pid_t pid, size_t size) {
 
     s[size] = '\0';
 
-    return s;
+    return ((void *) s);
 }
 
-static int parse_syscall(uint64_t nr, uint64_t args[6], pid_t pid) {
+static int parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
 
     int ret = 1;
     char *s = NULL;
 
     switch (nr) {
         case SYS_read:
-            s = read_string(args[1], pid, args[2]);
+            s = read_addr(pid, args[1], args[2]);
             printf("read(%ld, \"%s\", %ld)", args[0], s, args[2]);
             break;
         case SYS_write:
-            s = read_string(args[1], pid, args[2]);
+            s = read_addr(pid, args[1], args[2]);
             printf("write(%ld, \"%s\", %ld)", args[0], s, args[2]);
             break;
         default:
@@ -97,8 +99,8 @@ int main(int argc, char **argv) {
                 safe_ptrace(PTRACE_GET_SYSCALL_INFO, pid, (void *) size, &info);
                 switch (info.op) {
                     case PTRACE_SYSCALL_INFO_ENTRY:
-                        if (!parse_syscall(info.entry.nr, info.entry.args,
-                                    pid)) {
+                        if (!parse_syscall(pid, info.entry.nr,
+                                    info.entry.args)) {
                             printf(DEFAULT_FORMAT, info.entry.nr);
                         }
                         break;
