@@ -1,20 +1,17 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <unistd.h>
 
 #include <sys/ptrace.h>
-#include <sys/syscall.h>
 
 #include "ctrace.h"
 
-#define DEFAULT_FORMAT "syscall(%d, ...)"
+#define DEFAULT_FORMAT "%s(...)"
 
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
 
@@ -69,6 +66,17 @@ static int parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
     return ret;
 }
 
+syscall_t *find_syscall(uint64_t nr) {
+    for (size_t i = 0; i < sizeof(syscalls) / sizeof(syscall_t); i++) {
+        syscall_t *syscall = (syscalls + i);
+        if (syscall->nr == nr) {
+            return syscall;
+        }
+    }
+
+    return NULL;
+}
+
 int main(int argc, char **argv) {
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <cmd> [args...]\n", argv[0]);
@@ -101,7 +109,8 @@ int main(int argc, char **argv) {
                     case PTRACE_SYSCALL_INFO_ENTRY:
                         if (!parse_syscall(pid, info.entry.nr,
                                     info.entry.args)) {
-                            printf(DEFAULT_FORMAT, info.entry.nr);
+                            printf(DEFAULT_FORMAT,
+                                    find_syscall(info.entry.nr)->name);
                         }
                         break;
                     case PTRACE_SYSCALL_INFO_EXIT:
@@ -109,7 +118,8 @@ int main(int argc, char **argv) {
                                 info.exit.is_error ? " [ERR]" : "");
                         break;
                     case PTRACE_SYSCALL_INFO_SECCOMP:
-                        printf(DEFAULT_FORMAT, info.seccomp.nr);
+                        printf(DEFAULT_FORMAT,
+                                find_syscall(info.seccomp.nr)->name);
                         break;
                     default:
                         break;
