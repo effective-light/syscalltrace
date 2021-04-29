@@ -170,7 +170,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_32_ftruncate64,
         .name = "32_ftruncate64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -187,7 +187,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_32_personality,
         .name = "32_personality",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -195,7 +195,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_32_pread,
         .name = "32_pread",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, CHAR_PTR, SIZE_T, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -204,7 +204,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_32_pwrite,
         .name = "32_pwrite",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, U32, U64, U64}
     },
 #endif
@@ -212,7 +212,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_32_sigaction,
         .name = "32_sigaction",
-        .n_params = 5,
+        .n_params = 3,
         .params = {LONG, STRUCT_COMPAT_SIGACTION_PTR,
             STRUCT_COMPAT_SIGACTION_PTR}
     },
@@ -221,7 +221,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_32_truncate64,
         .name = "32_truncate64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CHAR_PTR, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -238,7 +238,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_64_munmap,
         .name = "64_munmap",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, SIZE_T}
     },
 #endif
@@ -246,7 +246,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_accept,
         .name = "accept",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_SOCKADDR_PTR, INT_PTR}
     },
 #endif
@@ -254,7 +254,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_accept4,
         .name = "accept4",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_SOCKADDR_PTR, INT_PTR, INT}
     },
 #endif
@@ -262,7 +262,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_access,
         .name = "access",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -270,7 +270,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_acct,
         .name = "acct",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -286,7 +286,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_adjtimex,
         .name = "adjtimex",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT___KERNEL_TIMEX_PTR}
     },
 #endif
@@ -294,7 +294,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_adjtimex_time32,
         .name = "adjtimex_time32",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_OLD_TIMEX32_PTR}
     },
 #endif
@@ -302,7 +302,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_alarm,
         .name = "alarm",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -310,7 +310,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_alpha_pipe,
         .name = "alpha_pipe",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -318,7 +318,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_arc_gettls,
         .name = "arc_gettls",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -326,7 +326,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_arch_prctl,
         .name = "arch_prctl",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, UNSIGNED_LONG}
     },
 #endif
@@ -334,7 +334,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_arc_settls,
         .name = "arc_settls",
-        .n_params = 5,
+        .n_params = 1,
         .params = {VOID_PTR}
     },
 #endif
@@ -342,7 +342,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_arc_usr_cmpxchg,
         .name = "arc_usr_cmpxchg",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT_PTR, INT, INT}
     },
 #endif
@@ -350,7 +350,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_arm64_personality,
         .name = "arm64_personality",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -358,7 +358,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_bdflush,
         .name = "bdflush",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, LONG}
     },
 #endif
@@ -366,7 +366,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_bind,
         .name = "bind",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_SOCKADDR_PTR, INT}
     },
 #endif
@@ -374,7 +374,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_bpf,
         .name = "bpf",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, UNION_BPF_ATTR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -382,7 +382,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_brk,
         .name = "brk",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -390,7 +390,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_cachectl,
         .name = "cachectl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, INT, INT}
     },
 #endif
@@ -398,7 +398,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_cacheflush,
         .name = "cacheflush",
-        .n_params = 5,
+        .n_params = 3,
         .params = {VOID_PTR, UNSIGNED_LONG, INT}
     },
 #endif
@@ -406,7 +406,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_capget,
         .name = "capget",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CAP_USER_HEADER_T, CAP_USER_DATA_T}
     },
 #endif
@@ -414,7 +414,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_capset,
         .name = "capset",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CAP_USER_HEADER_T, CAP_USER_DATA_T}
     },
 #endif
@@ -422,7 +422,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_chdir,
         .name = "chdir",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -430,7 +430,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_chmod,
         .name = "chmod",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UMODE_T}
     },
 #endif
@@ -438,7 +438,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_chown,
         .name = "chown",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, UID_T, GID_T}
     },
 #endif
@@ -446,7 +446,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_chown16,
         .name = "chown16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, OLD_UID_T, OLD_GID_T}
     },
 #endif
@@ -454,7 +454,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_chroot,
         .name = "chroot",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -462,7 +462,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_adjtime,
         .name = "clock_adjtime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT___KERNEL_TIMEX_PTR}
     },
 #endif
@@ -470,7 +470,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_adjtime32,
         .name = "clock_adjtime32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT_OLD_TIMEX32_PTR}
     },
 #endif
@@ -478,7 +478,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_getres,
         .name = "clock_getres",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
@@ -486,7 +486,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_getres_time32,
         .name = "clock_getres_time32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
@@ -494,7 +494,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_gettime,
         .name = "clock_gettime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
@@ -502,7 +502,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_gettime32,
         .name = "clock_gettime32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
@@ -510,7 +510,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_nanosleep,
         .name = "clock_nanosleep",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CLOCKID_T, INT, STRUCT___KERNEL_TIMESPEC_PTR,
             STRUCT___KERNEL_TIMESPEC_PTR}
     },
@@ -519,7 +519,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_nanosleep_time32,
         .name = "clock_nanosleep_time32",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CLOCKID_T, INT, STRUCT_OLD_TIMESPEC32_PTR,
             STRUCT_OLD_TIMESPEC32_PTR}
     },
@@ -528,7 +528,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_settime,
         .name = "clock_settime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
@@ -536,7 +536,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clock_settime32,
         .name = "clock_settime32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
@@ -553,7 +553,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_clone3,
         .name = "clone3",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_CLONE_ARGS_PTR, SIZE_T}
     },
 #endif
@@ -561,7 +561,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_close,
         .name = "close",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -569,7 +569,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_close_range,
         .name = "close_range",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -577,7 +577,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_connect,
         .name = "connect",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_SOCKADDR_PTR, INT}
     },
 #endif
@@ -585,7 +585,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_copy_file_range,
         .name = "copy_file_range",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, LOFF_T_PTR, INT, LOFF_T_PTR, SIZE_T, UNSIGNED_INT}
     },
 #endif
@@ -593,7 +593,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_creat,
         .name = "creat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UMODE_T}
     },
 #endif
@@ -601,7 +601,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_csky_fadvise64_64,
         .name = "csky_fadvise64_64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, LOFF_T, LOFF_T}
     },
 #endif
@@ -609,7 +609,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_debug_setcontext,
         .name = "debug_setcontext",
-        .n_params = 5,
+        .n_params = 3,
         .params = {STRUCT_UCONTEXT_PTR, INT, STRUCT_SIG_DBG_OP_PTR}
     },
 #endif
@@ -617,7 +617,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_delete_module,
         .name = "delete_module",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -625,7 +625,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_dup,
         .name = "dup",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -633,7 +633,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_dup2,
         .name = "dup2",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -641,7 +641,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_dup3,
         .name = "dup3",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_INT, INT}
     },
 #endif
@@ -649,7 +649,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_epoll_create,
         .name = "epoll_create",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -657,7 +657,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_epoll_create1,
         .name = "epoll_create1",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -665,7 +665,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_epoll_ctl,
         .name = "epoll_ctl",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, INT, STRUCT_EPOLL_EVENT_PTR}
     },
 #endif
@@ -673,7 +673,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_epoll_pwait,
         .name = "epoll_pwait",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, STRUCT_EPOLL_EVENT_PTR, INT, INT, SIGSET_T_PTR, SIZE_T}
     },
 #endif
@@ -681,7 +681,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_epoll_pwait2,
         .name = "epoll_pwait2",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, STRUCT_EPOLL_EVENT_PTR, INT,
             STRUCT___KERNEL_TIMESPEC_PTR, SIGSET_T_PTR, SIZE_T}
     },
@@ -690,7 +690,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_epoll_wait,
         .name = "epoll_wait",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_EPOLL_EVENT_PTR, INT, INT}
     },
 #endif
@@ -698,7 +698,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_eventfd,
         .name = "eventfd",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -706,7 +706,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_eventfd2,
         .name = "eventfd2",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, INT}
     },
 #endif
@@ -714,7 +714,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_execve,
         .name = "execve",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, CHAR_PTR__USER_PTR, CHAR_PTR__USER_PTR}
     },
 #endif
@@ -730,7 +730,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_exit,
         .name = "exit",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -738,7 +738,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_exit_group,
         .name = "exit_group",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -746,7 +746,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_faccessat,
         .name = "faccessat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, INT}
     },
 #endif
@@ -754,7 +754,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_faccessat2,
         .name = "faccessat2",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, INT, INT}
     },
 #endif
@@ -762,7 +762,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fadvise64,
         .name = "fadvise64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, LOFF_T, SIZE_T, INT}
     },
 #endif
@@ -770,7 +770,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fadvise64_64,
         .name = "fadvise64_64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, LOFF_T, LOFF_T, INT}
     },
 #endif
@@ -778,7 +778,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fadvise64_64_wrapper,
         .name = "fadvise64_64_wrapper",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, LOFF_T, LOFF_T}
     },
 #endif
@@ -786,7 +786,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fallocate,
         .name = "fallocate",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, LOFF_T, LOFF_T}
     },
 #endif
@@ -794,7 +794,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fanotify_init,
         .name = "fanotify_init",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -810,7 +810,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fchdir,
         .name = "fchdir",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -818,7 +818,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fchmod,
         .name = "fchmod",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, UMODE_T}
     },
 #endif
@@ -826,7 +826,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fchmodat,
         .name = "fchmodat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, UMODE_T}
     },
 #endif
@@ -834,7 +834,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fchown,
         .name = "fchown",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UID_T, GID_T}
     },
 #endif
@@ -842,7 +842,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fchown16,
         .name = "fchown16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, OLD_UID_T, OLD_GID_T}
     },
 #endif
@@ -858,7 +858,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fcntl,
         .name = "fcntl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_LONG}
     },
 #endif
@@ -866,7 +866,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fcntl64,
         .name = "fcntl64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_LONG}
     },
 #endif
@@ -874,7 +874,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fdatasync,
         .name = "fdatasync",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -882,7 +882,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fgetxattr,
         .name = "fgetxattr",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, VOID_PTR, SIZE_T}
     },
 #endif
@@ -890,7 +890,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_finit_module,
         .name = "finit_module",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, INT}
     },
 #endif
@@ -898,7 +898,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_flistxattr,
         .name = "flistxattr",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, SIZE_T}
     },
 #endif
@@ -906,7 +906,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_flock,
         .name = "flock",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -914,7 +914,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fork,
         .name = "fork",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -922,7 +922,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fp_udfiex_crtl,
         .name = "fp_udfiex_crtl",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -930,7 +930,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fremovexattr,
         .name = "fremovexattr",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, CHAR_PTR}
     },
 #endif
@@ -954,7 +954,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fsmount,
         .name = "fsmount",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -962,7 +962,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fsopen,
         .name = "fsopen",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -970,7 +970,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fspick,
         .name = "fspick",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -978,7 +978,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fstat,
         .name = "fstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT___OLD_KERNEL_STAT_PTR}
     },
 #endif
@@ -986,7 +986,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fstat64,
         .name = "fstat64",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, STRUCT_STAT64_PTR}
     },
 #endif
@@ -994,7 +994,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fstatat64,
         .name = "fstatat64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, STRUCT_STAT64_PTR, INT}
     },
 #endif
@@ -1002,7 +1002,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fstatfs,
         .name = "fstatfs",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_STATFS_PTR}
     },
 #endif
@@ -1010,7 +1010,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fstatfs64,
         .name = "fstatfs64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, SIZE_T, STRUCT_STATFS64_PTR}
     },
 #endif
@@ -1018,7 +1018,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fsync,
         .name = "fsync",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -1026,7 +1026,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ftruncate,
         .name = "ftruncate",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, UNSIGNED_LONG}
     },
 #endif
@@ -1034,7 +1034,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ftruncate64,
         .name = "ftruncate64",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, LOFF_T}
     },
 #endif
@@ -1042,7 +1042,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_futex,
         .name = "futex",
-        .n_params = 5,
+        .n_params = 6,
         .params = {U32_PTR, INT, U32, STRUCT___KERNEL_TIMESPEC_PTR, U32_PTR,
             U32}
     },
@@ -1051,7 +1051,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_futex_time32,
         .name = "futex_time32",
-        .n_params = 5,
+        .n_params = 6,
         .params = {U32_PTR, INT, U32, STRUCT_OLD_TIMESPEC32_PTR, U32_PTR, U32}
     },
 #endif
@@ -1059,7 +1059,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_futimesat,
         .name = "futimesat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, STRUCT___KERNEL_OLD_TIMEVAL_PTR}
     },
 #endif
@@ -1067,7 +1067,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_futimesat_time32,
         .name = "futimesat_time32",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, CHAR_PTR, STRUCT_OLD_TIMEVAL32_PTR}
     },
 #endif
@@ -1075,7 +1075,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getcpu,
         .name = "getcpu",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_PTR, UNSIGNED_PTR, STRUCT_GETCPU_CACHE_PTR}
     },
 #endif
@@ -1083,7 +1083,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getcwd,
         .name = "getcwd",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -1091,7 +1091,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getdents,
         .name = "getdents",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, STRUCT_LINUX_DIRENT_PTR, UNSIGNED_INT}
     },
 #endif
@@ -1099,7 +1099,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getdents64,
         .name = "getdents64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, STRUCT_LINUX_DIRENT64_PTR, UNSIGNED_INT}
     },
 #endif
@@ -1107,7 +1107,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getdomainname,
         .name = "getdomainname",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -1115,7 +1115,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getdtablesize,
         .name = "getdtablesize",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1123,7 +1123,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getegid,
         .name = "getegid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1131,7 +1131,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getegid16,
         .name = "getegid16",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1139,7 +1139,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_geteuid,
         .name = "geteuid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1147,7 +1147,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_geteuid16,
         .name = "geteuid16",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1155,7 +1155,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getgid,
         .name = "getgid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1163,7 +1163,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getgid16,
         .name = "getgid16",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1171,7 +1171,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getgroups,
         .name = "getgroups",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, GID_T_PTR}
     },
 #endif
@@ -1179,7 +1179,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getgroups16,
         .name = "getgroups16",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, OLD_GID_T_PTR}
     },
 #endif
@@ -1187,7 +1187,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_gethostname,
         .name = "gethostname",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -1195,7 +1195,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getitimer,
         .name = "getitimer",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT___KERNEL_OLD_ITIMERVAL_PTR}
     },
 #endif
@@ -1212,7 +1212,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getpagesize,
         .name = "getpagesize",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1220,7 +1220,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getpeername,
         .name = "getpeername",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_SOCKADDR_PTR, INT_PTR}
     },
 #endif
@@ -1228,7 +1228,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getpgid,
         .name = "getpgid",
-        .n_params = 5,
+        .n_params = 1,
         .params = {PID_T}
     },
 #endif
@@ -1236,7 +1236,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getpgrp,
         .name = "getpgrp",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1244,7 +1244,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getpid,
         .name = "getpid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1252,7 +1252,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getppid,
         .name = "getppid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1260,7 +1260,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getpriority,
         .name = "getpriority",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -1268,7 +1268,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getrandom,
         .name = "getrandom",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, SIZE_T, UNSIGNED_INT}
     },
 #endif
@@ -1276,7 +1276,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getresgid,
         .name = "getresgid",
-        .n_params = 5,
+        .n_params = 3,
         .params = {GID_T_PTR, GID_T_PTR, GID_T_PTR}
     },
 #endif
@@ -1284,7 +1284,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getresgid16,
         .name = "getresgid16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {OLD_GID_T_PTR, OLD_GID_T_PTR, OLD_GID_T_PTR}
     },
 #endif
@@ -1292,7 +1292,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getresuid,
         .name = "getresuid",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UID_T_PTR, UID_T_PTR, UID_T_PTR}
     },
 #endif
@@ -1300,7 +1300,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getresuid16,
         .name = "getresuid16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {OLD_UID_T_PTR, OLD_UID_T_PTR, OLD_UID_T_PTR}
     },
 #endif
@@ -1308,7 +1308,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getrlimit,
         .name = "getrlimit",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_RLIMIT_PTR}
     },
 #endif
@@ -1316,7 +1316,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_get_robust_list,
         .name = "get_robust_list",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_ROBUST_LIST_HEAD_PTR_PTR, SIZE_T_PTR}
     },
 #endif
@@ -1324,7 +1324,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getrusage,
         .name = "getrusage",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT_RUSAGE_PTR}
     },
 #endif
@@ -1332,7 +1332,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getsid,
         .name = "getsid",
-        .n_params = 5,
+        .n_params = 1,
         .params = {PID_T}
     },
 #endif
@@ -1340,7 +1340,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getsockname,
         .name = "getsockname",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_SOCKADDR_PTR, INT_PTR}
     },
 #endif
@@ -1356,7 +1356,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_get_thread_area,
         .name = "get_thread_area",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_USER_DESC_PTR}
     },
 #endif
@@ -1364,7 +1364,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_gettid,
         .name = "gettid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1372,7 +1372,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_gettimeofday,
         .name = "gettimeofday",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT___KERNEL_OLD_TIMEVAL_PTR, STRUCT_TIMEZONE_PTR}
     },
 #endif
@@ -1380,7 +1380,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getuid,
         .name = "getuid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1388,7 +1388,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getuid16,
         .name = "getuid16",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1396,7 +1396,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getxattr,
         .name = "getxattr",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CHAR_PTR, CHAR_PTR, VOID_PTR, SIZE_T}
     },
 #endif
@@ -1404,7 +1404,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getxgid,
         .name = "getxgid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1412,7 +1412,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getxpid,
         .name = "getxpid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1420,7 +1420,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_getxuid,
         .name = "getxuid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1436,7 +1436,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ia32_fadvise64_64,
         .name = "ia32_fadvise64_64",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, __U32, __U32, __U32, __U32, INT}
     },
 #endif
@@ -1444,7 +1444,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ia32_fallocate,
         .name = "ia32_fallocate",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT,
             UNSIGNED_INT}
     },
@@ -1453,7 +1453,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ia32_ftruncate64,
         .name = "ia32_ftruncate64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -1477,7 +1477,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ia32_readahead,
         .name = "ia32_readahead",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, UNSIGNED_INT, UNSIGNED_INT, SIZE_T}
     },
 #endif
@@ -1485,7 +1485,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ia32_sync_file_range,
         .name = "ia32_sync_file_range",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT,
             INT}
     },
@@ -1494,7 +1494,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ia32_truncate64,
         .name = "ia32_truncate64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -1502,7 +1502,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_init_module,
         .name = "init_module",
-        .n_params = 5,
+        .n_params = 3,
         .params = {VOID_PTR, UNSIGNED_LONG, CHAR_PTR}
     },
 #endif
@@ -1510,7 +1510,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_inotify_add_watch,
         .name = "inotify_add_watch",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, U32}
     },
 #endif
@@ -1518,7 +1518,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_inotify_init,
         .name = "inotify_init",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1526,7 +1526,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_inotify_init1,
         .name = "inotify_init1",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -1534,7 +1534,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_inotify_rm_watch,
         .name = "inotify_rm_watch",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, __S32}
     },
 #endif
@@ -1542,7 +1542,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_cancel,
         .name = "io_cancel",
-        .n_params = 5,
+        .n_params = 3,
         .params = {AIO_CONTEXT_T, STRUCT_IOCB_PTR, STRUCT_IO_EVENT_PTR}
     },
 #endif
@@ -1550,7 +1550,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ioctl,
         .name = "ioctl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_LONG}
     },
 #endif
@@ -1558,7 +1558,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_destroy,
         .name = "io_destroy",
-        .n_params = 5,
+        .n_params = 1,
         .params = {AIO_CONTEXT_T}
     },
 #endif
@@ -1584,7 +1584,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ioperm,
         .name = "ioperm",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, INT}
     },
 #endif
@@ -1592,7 +1592,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_pgetevents,
         .name = "io_pgetevents",
-        .n_params = 5,
+        .n_params = 6,
         .params = {AIO_CONTEXT_T, LONG, LONG, STRUCT_IO_EVENT_PTR,
             STRUCT___KERNEL_TIMESPEC_PTR, STRUCT___AIO_SIGSET_PTR}
     },
@@ -1601,7 +1601,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_pgetevents_time32,
         .name = "io_pgetevents_time32",
-        .n_params = 5,
+        .n_params = 6,
         .params = {AIO_CONTEXT_T, LONG, LONG, STRUCT_IO_EVENT_PTR,
             STRUCT_OLD_TIMESPEC32_PTR, STRUCT___AIO_SIGSET_PTR}
     },
@@ -1610,7 +1610,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_iopl,
         .name = "iopl",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -1618,7 +1618,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ioprio_get,
         .name = "ioprio_get",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -1626,7 +1626,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ioprio_set,
         .name = "ioprio_set",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, INT}
     },
 #endif
@@ -1634,7 +1634,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_setup,
         .name = "io_setup",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED, AIO_CONTEXT_T_PTR}
     },
 #endif
@@ -1642,7 +1642,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_submit,
         .name = "io_submit",
-        .n_params = 5,
+        .n_params = 3,
         .params = {AIO_CONTEXT_T, LONG, STRUCT_IOCB_PTR_PTR}
     },
 #endif
@@ -1650,7 +1650,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_uring_enter,
         .name = "io_uring_enter",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_INT, U32, U32, U32, VOID_PTR, SIZE_T}
     },
 #endif
@@ -1658,7 +1658,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_uring_register,
         .name = "io_uring_register",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_INT, UNSIGNED_INT, VOID_PTR, UNSIGNED_INT}
     },
 #endif
@@ -1666,7 +1666,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_io_uring_setup,
         .name = "io_uring_setup",
-        .n_params = 5,
+        .n_params = 2,
         .params = {U32, STRUCT_IO_URING_PARAMS_PTR}
     },
 #endif
@@ -1674,7 +1674,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ipc,
         .name = "ipc",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_INT, INT, UNSIGNED_LONG, UNSIGNED_LONG, VOID_PTR,
             LONG}
     },
@@ -1691,7 +1691,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_kern_features,
         .name = "kern_features",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -1707,7 +1707,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_kexec_load,
         .name = "kexec_load",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, STRUCT_KEXEC_SEGMENT_PTR,
             UNSIGNED_LONG}
     },
@@ -1725,7 +1725,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_kill,
         .name = "kill",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, INT}
     },
 #endif
@@ -1733,7 +1733,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lchown,
         .name = "lchown",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, UID_T, GID_T}
     },
 #endif
@@ -1741,7 +1741,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lchown16,
         .name = "lchown16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, OLD_UID_T, OLD_GID_T}
     },
 #endif
@@ -1749,7 +1749,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lgetxattr,
         .name = "lgetxattr",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CHAR_PTR, CHAR_PTR, VOID_PTR, SIZE_T}
     },
 #endif
@@ -1757,7 +1757,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_link,
         .name = "link",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, CHAR_PTR}
     },
 #endif
@@ -1773,7 +1773,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_listen,
         .name = "listen",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -1781,7 +1781,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_listxattr,
         .name = "listxattr",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, CHAR_PTR, SIZE_T}
     },
 #endif
@@ -1789,7 +1789,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_llistxattr,
         .name = "llistxattr",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, CHAR_PTR, SIZE_T}
     },
 #endif
@@ -1806,7 +1806,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lremovexattr,
         .name = "lremovexattr",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, CHAR_PTR}
     },
 #endif
@@ -1814,7 +1814,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lseek,
         .name = "lseek",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, OFF_T, UNSIGNED_INT}
     },
 #endif
@@ -1830,7 +1830,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lstat,
         .name = "lstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT___OLD_KERNEL_STAT_PTR}
     },
 #endif
@@ -1838,7 +1838,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_lstat64,
         .name = "lstat64",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STAT64_PTR}
     },
 #endif
@@ -1846,7 +1846,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_madvise,
         .name = "madvise",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, SIZE_T, INT}
     },
 #endif
@@ -1854,7 +1854,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mbind,
         .name = "mbind",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG_PTR, UNSIGNED_LONG, UNSIGNED_INT}
     },
@@ -1863,7 +1863,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_membarrier,
         .name = "membarrier",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, UNSIGNED_INT, INT}
     },
 #endif
@@ -1871,7 +1871,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_memfd_create,
         .name = "memfd_create",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -1879,7 +1879,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_memory_ordering,
         .name = "memory_ordering",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -1887,7 +1887,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_migrate_pages,
         .name = "migrate_pages",
-        .n_params = 5,
+        .n_params = 4,
         .params = {PID_T, UNSIGNED_LONG, UNSIGNED_LONG_PTR, UNSIGNED_LONG_PTR}
     },
 #endif
@@ -1895,7 +1895,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mincore,
         .name = "mincore",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, SIZE_T, UNSIGNED_CHAR_PTR}
     },
 #endif
@@ -1903,7 +1903,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mips_mmap,
         .name = "mips_mmap",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, OFF_T}
     },
@@ -1912,7 +1912,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mips_mmap2,
         .name = "mips_mmap2",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -1921,7 +1921,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mkdir,
         .name = "mkdir",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, UMODE_T}
     },
 #endif
@@ -1929,7 +1929,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mkdirat,
         .name = "mkdirat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, UMODE_T}
     },
 #endif
@@ -1937,7 +1937,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mknod,
         .name = "mknod",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, UMODE_T, UNSIGNED}
     },
 #endif
@@ -1945,7 +1945,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mknodat,
         .name = "mknodat",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, UMODE_T, UNSIGNED_INT}
     },
 #endif
@@ -1953,7 +1953,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mlock,
         .name = "mlock",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, SIZE_T}
     },
 #endif
@@ -1961,7 +1961,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mlock2,
         .name = "mlock2",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, SIZE_T, INT}
     },
 #endif
@@ -1969,7 +1969,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mlockall,
         .name = "mlockall",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -1977,7 +1977,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mmap,
         .name = "mmap",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -1986,7 +1986,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mmap2,
         .name = "mmap2",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, OFF_T}
     },
@@ -1995,7 +1995,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mmap_pgoff,
         .name = "mmap_pgoff",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -2004,7 +2004,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_modify_ldt,
         .name = "modify_ldt",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, VOID_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2036,7 +2036,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_move_pages,
         .name = "move_pages",
-        .n_params = 5,
+        .n_params = 6,
         .params = {PID_T, UNSIGNED_LONG, VOID_PTR_PTR, INT_PTR, INT_PTR, INT}
     },
 #endif
@@ -2044,7 +2044,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mprotect,
         .name = "mprotect",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, SIZE_T, UNSIGNED_LONG}
     },
 #endif
@@ -2052,7 +2052,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mq_getsetattr,
         .name = "mq_getsetattr",
-        .n_params = 5,
+        .n_params = 3,
         .params = {MQD_T, STRUCT_MQ_ATTR_PTR, STRUCT_MQ_ATTR_PTR}
     },
 #endif
@@ -2060,7 +2060,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mq_notify,
         .name = "mq_notify",
-        .n_params = 5,
+        .n_params = 2,
         .params = {MQD_T, STRUCT_SIGEVENT_PTR}
     },
 #endif
@@ -2068,7 +2068,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mq_open,
         .name = "mq_open",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CHAR_PTR, INT, UMODE_T, STRUCT_MQ_ATTR_PTR}
     },
 #endif
@@ -2112,7 +2112,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mq_unlink,
         .name = "mq_unlink",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -2129,7 +2129,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_msgctl,
         .name = "msgctl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, STRUCT_MSQID_DS_PTR}
     },
 #endif
@@ -2137,7 +2137,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_msgget,
         .name = "msgget",
-        .n_params = 5,
+        .n_params = 2,
         .params = {KEY_T, INT}
     },
 #endif
@@ -2153,7 +2153,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_msgsnd,
         .name = "msgsnd",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_MSGBUF_PTR, SIZE_T, INT}
     },
 #endif
@@ -2161,7 +2161,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_msync,
         .name = "msync",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, SIZE_T, INT}
     },
 #endif
@@ -2169,7 +2169,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_munlock,
         .name = "munlock",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, SIZE_T}
     },
 #endif
@@ -2177,7 +2177,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_munlockall,
         .name = "munlockall",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -2185,7 +2185,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_munmap,
         .name = "munmap",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, SIZE_T}
     },
 #endif
@@ -2201,7 +2201,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_nanosleep,
         .name = "nanosleep",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT___KERNEL_TIMESPEC_PTR, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
@@ -2209,7 +2209,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_nanosleep_time32,
         .name = "nanosleep_time32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_OLD_TIMESPEC32_PTR, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
@@ -2217,7 +2217,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_newfstat,
         .name = "newfstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_STAT_PTR}
     },
 #endif
@@ -2225,7 +2225,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_newfstatat,
         .name = "newfstatat",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, STRUCT_STAT_PTR, INT}
     },
 #endif
@@ -2233,7 +2233,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_newlstat,
         .name = "newlstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STAT_PTR}
     },
 #endif
@@ -2241,7 +2241,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_newstat,
         .name = "newstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STAT_PTR}
     },
 #endif
@@ -2249,7 +2249,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_newuname,
         .name = "newuname",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_NEW_UTSNAME_PTR}
     },
 #endif
@@ -2257,7 +2257,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_nice,
         .name = "nice",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -2265,7 +2265,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_nis_syscall,
         .name = "nis_syscall",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -2273,7 +2273,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ni_syscall,
         .name = "ni_syscall",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -2281,7 +2281,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_adjtimex,
         .name = "old_adjtimex",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_TIMEX32_PTR}
     },
 #endif
@@ -2289,7 +2289,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_getrlimit,
         .name = "old_getrlimit",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_RLIMIT_PTR}
     },
 #endif
@@ -2297,7 +2297,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_mmap,
         .name = "old_mmap",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_MMAP_ARG_STRUCT_PTR}
     },
 #endif
@@ -2305,7 +2305,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_msgctl,
         .name = "old_msgctl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, STRUCT_MSQID_DS_PTR}
     },
 #endif
@@ -2313,7 +2313,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_readdir,
         .name = "old_readdir",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, STRUCT_OLD_LINUX_DIRENT_PTR, UNSIGNED_INT}
     },
 #endif
@@ -2321,7 +2321,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_select,
         .name = "old_select",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_SEL_ARG_STRUCT_PTR}
     },
 #endif
@@ -2329,7 +2329,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_semctl,
         .name = "old_semctl",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, INT, UNSIGNED_LONG}
     },
 #endif
@@ -2337,7 +2337,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_old_shmctl,
         .name = "old_shmctl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, STRUCT_SHMID_DS_PTR}
     },
 #endif
@@ -2345,7 +2345,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_oldumount,
         .name = "oldumount",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -2353,7 +2353,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_olduname,
         .name = "olduname",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_OLDOLD_UTSNAME_PTR}
     },
 #endif
@@ -2361,7 +2361,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_open,
         .name = "open",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, INT, UMODE_T}
     },
 #endif
@@ -2369,7 +2369,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_openat,
         .name = "openat",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, INT, UMODE_T}
     },
 #endif
@@ -2377,7 +2377,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_openat2,
         .name = "openat2",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, STRUCT_OPEN_HOW_PTR, SIZE_T}
     },
 #endif
@@ -2385,7 +2385,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_open_by_handle_at,
         .name = "open_by_handle_at",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_FILE_HANDLE_PTR, INT}
     },
 #endif
@@ -2393,7 +2393,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_open_tree,
         .name = "open_tree",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, UNSIGNED}
     },
 #endif
@@ -2401,7 +2401,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_brk,
         .name = "osf_brk",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -2409,7 +2409,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_fstat,
         .name = "osf_fstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT_OSF_STAT_PTR}
     },
 #endif
@@ -2417,7 +2417,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_fstatfs,
         .name = "osf_fstatfs",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, STRUCT_OSF_STATFS_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2425,7 +2425,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_fstatfs64,
         .name = "osf_fstatfs64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, STRUCT_OSF_STATFS64_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2433,7 +2433,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_getdirentries,
         .name = "osf_getdirentries",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_INT, STRUCT_OSF_DIRENT_PTR, UNSIGNED_INT, LONG_PTR}
     },
 #endif
@@ -2441,7 +2441,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_getdomainname,
         .name = "osf_getdomainname",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -2449,7 +2449,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_getpriority,
         .name = "osf_getpriority",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -2457,7 +2457,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_getrusage,
         .name = "osf_getrusage",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT_RUSAGE32_PTR}
     },
 #endif
@@ -2473,7 +2473,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_gettimeofday,
         .name = "osf_gettimeofday",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_TIMEVAL32_PTR, STRUCT_TIMEZONE_PTR}
     },
 #endif
@@ -2481,7 +2481,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_lstat,
         .name = "osf_lstat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_OSF_STAT_PTR}
     },
 #endif
@@ -2489,7 +2489,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_mmap,
         .name = "osf_mmap",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -2498,7 +2498,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_mount,
         .name = "osf_mount",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_LONG, CHAR_PTR, INT, VOID_PTR}
     },
 #endif
@@ -2506,7 +2506,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_proplist_syscall,
         .name = "osf_proplist_syscall",
-        .n_params = 5,
+        .n_params = 2,
         .params = {ENUM_PL_CODE, UNION_PL_ARGS_PTR}
     },
 #endif
@@ -2514,7 +2514,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_readv,
         .name = "osf_readv",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2531,7 +2531,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_set_program_attributes,
         .name = "osf_set_program_attributes",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -2547,7 +2547,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_settimeofday,
         .name = "osf_settimeofday",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_TIMEVAL32_PTR, STRUCT_TIMEZONE_PTR}
     },
 #endif
@@ -2555,7 +2555,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_sigaction,
         .name = "osf_sigaction",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_OSF_SIGACTION_PTR, STRUCT_OSF_SIGACTION_PTR}
     },
 #endif
@@ -2563,7 +2563,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_sigprocmask,
         .name = "osf_sigprocmask",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, UNSIGNED_LONG}
     },
 #endif
@@ -2571,7 +2571,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_sigstack,
         .name = "osf_sigstack",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_SIGSTACK_PTR, STRUCT_SIGSTACK_PTR}
     },
 #endif
@@ -2579,7 +2579,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_stat,
         .name = "osf_stat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_OSF_STAT_PTR}
     },
 #endif
@@ -2587,7 +2587,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_statfs,
         .name = "osf_statfs",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, STRUCT_OSF_STATFS_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2595,7 +2595,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_statfs64,
         .name = "osf_statfs64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, STRUCT_OSF_STATFS64_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2603,7 +2603,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_sysinfo,
         .name = "osf_sysinfo",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, LONG}
     },
 #endif
@@ -2611,7 +2611,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_usleep_thread,
         .name = "osf_usleep_thread",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_TIMEVAL32_PTR, STRUCT_TIMEVAL32_PTR}
     },
 #endif
@@ -2619,7 +2619,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_utimes,
         .name = "osf_utimes",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_TIMEVAL32_PTR}
     },
 #endif
@@ -2627,7 +2627,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_utsname,
         .name = "osf_utsname",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -2635,7 +2635,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_wait4,
         .name = "osf_wait4",
-        .n_params = 5,
+        .n_params = 4,
         .params = {PID_T, INT_PTR, INT, STRUCT_RUSAGE32_PTR}
     },
 #endif
@@ -2643,7 +2643,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_osf_writev,
         .name = "osf_writev",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2651,7 +2651,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pause,
         .name = "pause",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -2659,7 +2659,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pciconfig_iobase,
         .name = "pciconfig_iobase",
-        .n_params = 5,
+        .n_params = 3,
         .params = {LONG, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -2693,7 +2693,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_personality,
         .name = "personality",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -2701,7 +2701,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pidfd_getfd,
         .name = "pidfd_getfd",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, UNSIGNED_INT}
     },
 #endif
@@ -2709,7 +2709,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pidfd_open,
         .name = "pidfd_open",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, UNSIGNED_INT}
     },
 #endif
@@ -2717,7 +2717,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pidfd_send_signal,
         .name = "pidfd_send_signal",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, SIGINFO_T_PTR, UNSIGNED_INT}
     },
 #endif
@@ -2725,7 +2725,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pipe,
         .name = "pipe",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT_PTR}
     },
 #endif
@@ -2733,7 +2733,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pipe2,
         .name = "pipe2",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT_PTR, INT}
     },
 #endif
@@ -2741,7 +2741,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pivot_root,
         .name = "pivot_root",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, CHAR_PTR}
     },
 #endif
@@ -2749,7 +2749,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pkey_alloc,
         .name = "pkey_alloc",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -2757,7 +2757,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pkey_free,
         .name = "pkey_free",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -2765,7 +2765,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pkey_mprotect,
         .name = "pkey_mprotect",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_LONG, SIZE_T, UNSIGNED_LONG, INT}
     },
 #endif
@@ -2773,7 +2773,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_poll,
         .name = "poll",
-        .n_params = 5,
+        .n_params = 3,
         .params = {STRUCT_POLLFD_PTR, UNSIGNED_INT, INT}
     },
 #endif
@@ -2808,7 +2808,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pread64,
         .name = "pread64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, LOFF_T}
     },
 #endif
@@ -2825,7 +2825,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_preadv2,
         .name = "preadv2",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG, RWF_T}
     },
@@ -2834,7 +2834,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_prlimit64,
         .name = "prlimit64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {PID_T, UNSIGNED_INT, STRUCT_RLIMIT64_PTR,
             STRUCT_RLIMIT64_PTR}
     },
@@ -2851,7 +2851,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_process_vm_readv,
         .name = "process_vm_readv",
-        .n_params = 5,
+        .n_params = 6,
         .params = {PID_T, STRUCT_IOVEC_PTR, UNSIGNED_LONG, STRUCT_IOVEC_PTR,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -2860,7 +2860,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_process_vm_writev,
         .name = "process_vm_writev",
-        .n_params = 5,
+        .n_params = 6,
         .params = {PID_T, STRUCT_IOVEC_PTR, UNSIGNED_LONG, STRUCT_IOVEC_PTR,
             UNSIGNED_LONG, UNSIGNED_LONG}
     },
@@ -2869,7 +2869,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pselect6,
         .name = "pselect6",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, FD_SET_PTR, FD_SET_PTR, FD_SET_PTR,
             STRUCT___KERNEL_TIMESPEC_PTR, VOID_PTR}
     },
@@ -2878,7 +2878,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pselect6_time32,
         .name = "pselect6_time32",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, FD_SET_PTR, FD_SET_PTR, FD_SET_PTR,
             STRUCT_OLD_TIMESPEC32_PTR, VOID_PTR}
     },
@@ -2887,7 +2887,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ptrace,
         .name = "ptrace",
-        .n_params = 5,
+        .n_params = 4,
         .params = {LONG, LONG, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -2895,7 +2895,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pwrite64,
         .name = "pwrite64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, LOFF_T}
     },
 #endif
@@ -2912,7 +2912,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pwritev2,
         .name = "pwritev2",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG, RWF_T}
     },
@@ -2921,7 +2921,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_quotactl,
         .name = "quotactl",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_INT, CHAR_PTR, QID_T, VOID_PTR}
     },
 #endif
@@ -2929,7 +2929,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_read,
         .name = "read",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T}
     },
 #endif
@@ -2937,7 +2937,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_readahead,
         .name = "readahead",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, LOFF_T, SIZE_T}
     },
 #endif
@@ -2945,7 +2945,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_readlink,
         .name = "readlink",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, CHAR_PTR, INT}
     },
 #endif
@@ -2953,7 +2953,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_readlinkat,
         .name = "readlinkat",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, CHAR_PTR, INT}
     },
 #endif
@@ -2961,7 +2961,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_readv,
         .name = "readv",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -2969,7 +2969,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_reboot,
         .name = "reboot",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, UNSIGNED_INT, VOID_PTR}
     },
 #endif
@@ -2977,7 +2977,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_recv,
         .name = "recv",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, VOID_PTR, SIZE_T, UNSIGNED_INT}
     },
 #endif
@@ -2985,7 +2985,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_recvfrom,
         .name = "recvfrom",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, VOID_PTR, SIZE_T, UNSIGNED_INT, STRUCT_SOCKADDR_PTR,
             INT_PTR}
     },
@@ -3012,7 +3012,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_recvmsg,
         .name = "recvmsg",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_USER_MSGHDR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -3029,7 +3029,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_removexattr,
         .name = "removexattr",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, CHAR_PTR}
     },
 #endif
@@ -3037,7 +3037,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rename,
         .name = "rename",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, CHAR_PTR}
     },
 #endif
@@ -3045,7 +3045,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_renameat,
         .name = "renameat",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, INT, CHAR_PTR}
     },
 #endif
@@ -3061,7 +3061,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_request_key,
         .name = "request_key",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CHAR_PTR, CHAR_PTR, CHAR_PTR, KEY_SERIAL_T}
     },
 #endif
@@ -3069,7 +3069,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_restart_syscall,
         .name = "restart_syscall",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3077,7 +3077,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_riscv_flush_icache,
         .name = "riscv_flush_icache",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UINTPTR_T, UINTPTR_T, UINTPTR_T}
     },
 #endif
@@ -3085,7 +3085,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rmdir,
         .name = "rmdir",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -3093,7 +3093,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rseq,
         .name = "rseq",
-        .n_params = 5,
+        .n_params = 4,
         .params = {STRUCT_RSEQ_PTR, U32, INT, U32}
     },
 #endif
@@ -3101,7 +3101,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rtas,
         .name = "rtas",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_RTAS_ARGS_PTR}
     },
 #endif
@@ -3109,7 +3109,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigaction,
         .name = "rt_sigaction",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_SIGACTION_PTR, STRUCT_SIGACTION_PTR, SIZE_T}
     },
 #endif
@@ -3117,7 +3117,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigpending,
         .name = "rt_sigpending",
-        .n_params = 5,
+        .n_params = 2,
         .params = {SIGSET_T_PTR, SIZE_T}
     },
 #endif
@@ -3125,7 +3125,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigprocmask,
         .name = "rt_sigprocmask",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, SIGSET_T_PTR, SIGSET_T_PTR, SIZE_T}
     },
 #endif
@@ -3133,7 +3133,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigqueueinfo,
         .name = "rt_sigqueueinfo",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, INT, SIGINFO_T_PTR}
     },
 #endif
@@ -3141,7 +3141,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigreturn,
         .name = "rt_sigreturn",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3149,7 +3149,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigsuspend,
         .name = "rt_sigsuspend",
-        .n_params = 5,
+        .n_params = 2,
         .params = {SIGSET_T_PTR, SIZE_T}
     },
 #endif
@@ -3157,7 +3157,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigtimedwait,
         .name = "rt_sigtimedwait",
-        .n_params = 5,
+        .n_params = 4,
         .params = {SIGSET_T_PTR, SIGINFO_T_PTR, STRUCT___KERNEL_TIMESPEC_PTR,
             SIZE_T}
     },
@@ -3166,7 +3166,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_sigtimedwait_time32,
         .name = "rt_sigtimedwait_time32",
-        .n_params = 5,
+        .n_params = 4,
         .params = {SIGSET_T_PTR, SIGINFO_T_PTR, STRUCT_OLD_TIMESPEC32_PTR,
             SIZE_T}
     },
@@ -3175,7 +3175,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_rt_tgsigqueueinfo,
         .name = "rt_tgsigqueueinfo",
-        .n_params = 5,
+        .n_params = 4,
         .params = {PID_T, PID_T, INT, SIGINFO_T_PTR}
     },
 #endif
@@ -3183,7 +3183,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_s390_guarded_storage,
         .name = "s390_guarded_storage",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT_GS_CB_PTR}
     },
 #endif
@@ -3199,7 +3199,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_s390_pci_mmio_read,
         .name = "s390_pci_mmio_read",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, VOID_PTR, SIZE_T}
     },
 #endif
@@ -3207,7 +3207,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_s390_pci_mmio_write,
         .name = "s390_pci_mmio_write",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, VOID_PTR, SIZE_T}
     },
 #endif
@@ -3215,7 +3215,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_s390_personality,
         .name = "s390_personality",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_INT}
     },
 #endif
@@ -3223,7 +3223,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_s390_runtime_instr,
         .name = "s390_runtime_instr",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -3231,7 +3231,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_s390_sthyi,
         .name = "s390_sthyi",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_LONG, VOID_PTR, U64_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -3239,7 +3239,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_getaffinity,
         .name = "sched_getaffinity",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, UNSIGNED_INT, UNSIGNED_LONG_PTR}
     },
 #endif
@@ -3247,7 +3247,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_getattr,
         .name = "sched_getattr",
-        .n_params = 5,
+        .n_params = 4,
         .params = {PID_T, STRUCT_SCHED_ATTR_PTR, UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -3255,7 +3255,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_getparam,
         .name = "sched_getparam",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, STRUCT_SCHED_PARAM_PTR}
     },
 #endif
@@ -3263,7 +3263,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_get_priority_max,
         .name = "sched_get_priority_max",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -3271,7 +3271,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_get_priority_min,
         .name = "sched_get_priority_min",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -3279,7 +3279,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_getscheduler,
         .name = "sched_getscheduler",
-        .n_params = 5,
+        .n_params = 1,
         .params = {PID_T}
     },
 #endif
@@ -3287,7 +3287,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_rr_get_interval,
         .name = "sched_rr_get_interval",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
@@ -3295,7 +3295,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_rr_get_interval_time32,
         .name = "sched_rr_get_interval_time32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
@@ -3303,7 +3303,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_setaffinity,
         .name = "sched_setaffinity",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, UNSIGNED_INT, UNSIGNED_LONG_PTR}
     },
 #endif
@@ -3311,7 +3311,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_setattr,
         .name = "sched_setattr",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, STRUCT_SCHED_ATTR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -3319,7 +3319,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_setparam,
         .name = "sched_setparam",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, STRUCT_SCHED_PARAM_PTR}
     },
 #endif
@@ -3327,7 +3327,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_setscheduler,
         .name = "sched_setscheduler",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, INT, STRUCT_SCHED_PARAM_PTR}
     },
 #endif
@@ -3335,7 +3335,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sched_yield,
         .name = "sched_yield",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3343,7 +3343,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_seccomp,
         .name = "seccomp",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, UNSIGNED_INT, VOID_PTR}
     },
 #endif
@@ -3360,7 +3360,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_semctl,
         .name = "semctl",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, INT, UNSIGNED_LONG}
     },
 #endif
@@ -3368,7 +3368,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_semget,
         .name = "semget",
-        .n_params = 5,
+        .n_params = 3,
         .params = {KEY_T, INT, INT}
     },
 #endif
@@ -3376,7 +3376,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_semop,
         .name = "semop",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_SEMBUF_PTR, UNSIGNED}
     },
 #endif
@@ -3384,7 +3384,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_semtimedop,
         .name = "semtimedop",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_SEMBUF_PTR, UNSIGNED_INT,
             STRUCT___KERNEL_TIMESPEC_PTR}
     },
@@ -3393,7 +3393,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_semtimedop_time32,
         .name = "semtimedop_time32",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_SEMBUF_PTR, UNSIGNED_INT,
             STRUCT_OLD_TIMESPEC32_PTR}
     },
@@ -3402,7 +3402,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_send,
         .name = "send",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, VOID_PTR, SIZE_T, UNSIGNED_INT}
     },
 #endif
@@ -3410,7 +3410,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sendfile,
         .name = "sendfile",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, OFF_T_PTR, SIZE_T}
     },
 #endif
@@ -3418,7 +3418,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sendfile64,
         .name = "sendfile64",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, LOFF_T_PTR, SIZE_T}
     },
 #endif
@@ -3426,7 +3426,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sendmmsg,
         .name = "sendmmsg",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_MMSGHDR_PTR, UNSIGNED_INT, UNSIGNED_INT}
     },
 #endif
@@ -3434,7 +3434,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sendmsg,
         .name = "sendmsg",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_USER_MSGHDR_PTR, UNSIGNED_INT}
     },
 #endif
@@ -3442,7 +3442,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sendto,
         .name = "sendto",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, VOID_PTR, SIZE_T, UNSIGNED_INT, STRUCT_SOCKADDR_PTR,
             INT}
     },
@@ -3451,7 +3451,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setdomainname,
         .name = "setdomainname",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -3459,7 +3459,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setfsgid,
         .name = "setfsgid",
-        .n_params = 5,
+        .n_params = 1,
         .params = {GID_T}
     },
 #endif
@@ -3467,7 +3467,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setfsgid16,
         .name = "setfsgid16",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_GID_T}
     },
 #endif
@@ -3475,7 +3475,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setfsuid,
         .name = "setfsuid",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UID_T}
     },
 #endif
@@ -3483,7 +3483,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setfsuid16,
         .name = "setfsuid16",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_UID_T}
     },
 #endif
@@ -3491,7 +3491,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setgid,
         .name = "setgid",
-        .n_params = 5,
+        .n_params = 1,
         .params = {GID_T}
     },
 #endif
@@ -3499,7 +3499,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setgid16,
         .name = "setgid16",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_GID_T}
     },
 #endif
@@ -3507,7 +3507,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setgroups,
         .name = "setgroups",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, GID_T_PTR}
     },
 #endif
@@ -3515,7 +3515,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setgroups16,
         .name = "setgroups16",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, OLD_GID_T_PTR}
     },
 #endif
@@ -3523,7 +3523,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sethae,
         .name = "sethae",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -3531,7 +3531,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sethostname,
         .name = "sethostname",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -3539,7 +3539,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setitimer,
         .name = "setitimer",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT___KERNEL_OLD_ITIMERVAL_PTR,
             STRUCT___KERNEL_OLD_ITIMERVAL_PTR}
     },
@@ -3548,7 +3548,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_set_mempolicy,
         .name = "set_mempolicy",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, UNSIGNED_LONG_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -3556,7 +3556,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setns,
         .name = "setns",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -3564,7 +3564,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setpgid,
         .name = "setpgid",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, PID_T}
     },
 #endif
@@ -3572,7 +3572,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setpriority,
         .name = "setpriority",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, INT}
     },
 #endif
@@ -3580,7 +3580,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setregid,
         .name = "setregid",
-        .n_params = 5,
+        .n_params = 2,
         .params = {GID_T, GID_T}
     },
 #endif
@@ -3588,7 +3588,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setregid16,
         .name = "setregid16",
-        .n_params = 5,
+        .n_params = 2,
         .params = {OLD_GID_T, OLD_GID_T}
     },
 #endif
@@ -3596,7 +3596,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setresgid,
         .name = "setresgid",
-        .n_params = 5,
+        .n_params = 3,
         .params = {GID_T, GID_T, GID_T}
     },
 #endif
@@ -3604,7 +3604,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setresgid16,
         .name = "setresgid16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {OLD_GID_T, OLD_GID_T, OLD_GID_T}
     },
 #endif
@@ -3612,7 +3612,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setresuid,
         .name = "setresuid",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UID_T, UID_T, UID_T}
     },
 #endif
@@ -3620,7 +3620,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setresuid16,
         .name = "setresuid16",
-        .n_params = 5,
+        .n_params = 3,
         .params = {OLD_UID_T, OLD_UID_T, OLD_UID_T}
     },
 #endif
@@ -3628,7 +3628,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setreuid,
         .name = "setreuid",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UID_T, UID_T}
     },
 #endif
@@ -3636,7 +3636,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setreuid16,
         .name = "setreuid16",
-        .n_params = 5,
+        .n_params = 2,
         .params = {OLD_UID_T, OLD_UID_T}
     },
 #endif
@@ -3644,7 +3644,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setrlimit,
         .name = "setrlimit",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_RLIMIT_PTR}
     },
 #endif
@@ -3652,7 +3652,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_set_robust_list,
         .name = "set_robust_list",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT_ROBUST_LIST_HEAD_PTR, SIZE_T}
     },
 #endif
@@ -3660,7 +3660,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setsid,
         .name = "setsid",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3676,7 +3676,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_set_thread_area,
         .name = "set_thread_area",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -3684,7 +3684,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_set_tid_address,
         .name = "set_tid_address",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT_PTR}
     },
 #endif
@@ -3692,7 +3692,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_settimeofday,
         .name = "settimeofday",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STRUCT___KERNEL_OLD_TIMEVAL_PTR, STRUCT_TIMEZONE_PTR}
     },
 #endif
@@ -3700,7 +3700,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setuid,
         .name = "setuid",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UID_T}
     },
 #endif
@@ -3708,7 +3708,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_setuid16,
         .name = "setuid16",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_UID_T}
     },
 #endif
@@ -3724,7 +3724,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sgetmask,
         .name = "sgetmask",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3732,7 +3732,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_shmat,
         .name = "shmat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, INT}
     },
 #endif
@@ -3740,7 +3740,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_shmctl,
         .name = "shmctl",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, STRUCT_SHMID_DS_PTR}
     },
 #endif
@@ -3748,7 +3748,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_shmdt,
         .name = "shmdt",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -3756,7 +3756,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_shmget,
         .name = "shmget",
-        .n_params = 5,
+        .n_params = 3,
         .params = {KEY_T, SIZE_T, INT}
     },
 #endif
@@ -3764,7 +3764,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_shutdown,
         .name = "shutdown",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -3772,7 +3772,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sigaction,
         .name = "sigaction",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_OLD_SIGACTION_PTR, STRUCT_OLD_SIGACTION_PTR}
     },
 #endif
@@ -3780,7 +3780,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sigaltstack,
         .name = "sigaltstack",
-        .n_params = 5,
+        .n_params = 2,
         .params = {STACK_T_PTR, STACK_T_PTR}
     },
 #endif
@@ -3788,7 +3788,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_signal,
         .name = "signal",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, __SIGHANDLER_T}
     },
 #endif
@@ -3796,7 +3796,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_signalfd,
         .name = "signalfd",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, SIGSET_T_PTR, SIZE_T}
     },
 #endif
@@ -3804,7 +3804,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_signalfd4,
         .name = "signalfd4",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, SIGSET_T_PTR, SIZE_T, INT}
     },
 #endif
@@ -3812,7 +3812,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sigpending,
         .name = "sigpending",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_SIGSET_T_PTR}
     },
 #endif
@@ -3820,7 +3820,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sigprocmask,
         .name = "sigprocmask",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, OLD_SIGSET_T_PTR, OLD_SIGSET_T_PTR}
     },
 #endif
@@ -3828,7 +3828,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sigreturn,
         .name = "sigreturn",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3836,7 +3836,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sigsuspend,
         .name = "sigsuspend",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_SIGSET_T}
     },
 #endif
@@ -3844,7 +3844,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_socket,
         .name = "socket",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, INT, INT}
     },
 #endif
@@ -3852,7 +3852,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_socketcall,
         .name = "socketcall",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, UNSIGNED_LONG_PTR}
     },
 #endif
@@ -3860,7 +3860,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_socketpair,
         .name = "socketpair",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, INT, INT_PTR}
     },
 #endif
@@ -3868,7 +3868,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sparc64_personality,
         .name = "sparc64_personality",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -3876,7 +3876,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sparc_adjtimex,
         .name = "sparc_adjtimex",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT___KERNEL_TIMEX_PTR}
     },
 #endif
@@ -3884,7 +3884,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sparc_clock_adjtime,
         .name = "sparc_clock_adjtime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CLOCKID_T, STRUCT___KERNEL_TIMEX_PTR}
     },
 #endif
@@ -3892,7 +3892,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sparc_ipc,
         .name = "sparc_ipc",
-        .n_params = 5,
+        .n_params = 6,
         .params = {UNSIGNED_INT, INT, UNSIGNED_LONG, UNSIGNED_LONG, VOID_PTR,
             LONG}
     },
@@ -3901,7 +3901,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sparc_pipe,
         .name = "sparc_pipe",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -3918,7 +3918,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sparc_sigaction,
         .name = "sparc_sigaction",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, STRUCT_OLD_SIGACTION_PTR, STRUCT_OLD_SIGACTION_PTR}
     },
 #endif
@@ -3926,7 +3926,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_splice,
         .name = "splice",
-        .n_params = 5,
+        .n_params = 6,
         .params = {INT, LOFF_T_PTR, INT, LOFF_T_PTR, SIZE_T, UNSIGNED_INT}
     },
 #endif
@@ -3934,7 +3934,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_spu_create,
         .name = "spu_create",
-        .n_params = 5,
+        .n_params = 4,
         .params = {CHAR_PTR, UNSIGNED_INT, UMODE_T, INT}
     },
 #endif
@@ -3942,7 +3942,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_spu_run,
         .name = "spu_run",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, __U32_PTR, __U32_PTR}
     },
 #endif
@@ -3950,7 +3950,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ssetmask,
         .name = "ssetmask",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -3958,7 +3958,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_stat,
         .name = "stat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT___OLD_KERNEL_STAT_PTR}
     },
 #endif
@@ -3966,7 +3966,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_stat64,
         .name = "stat64",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STAT64_PTR}
     },
 #endif
@@ -3974,7 +3974,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_statfs,
         .name = "statfs",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STATFS_PTR}
     },
 #endif
@@ -3982,7 +3982,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_statfs64,
         .name = "statfs64",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, SIZE_T, STRUCT_STATFS64_PTR}
     },
 #endif
@@ -3998,7 +3998,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_stime,
         .name = "stime",
-        .n_params = 5,
+        .n_params = 1,
         .params = {__KERNEL_OLD_TIME_T_PTR}
     },
 #endif
@@ -4006,7 +4006,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_stime32,
         .name = "stime32",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_TIME32_T_PTR}
     },
 #endif
@@ -4014,7 +4014,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_subpage_prot,
         .name = "subpage_prot",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, U32_PTR}
     },
 #endif
@@ -4022,7 +4022,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_swapcontext,
         .name = "swapcontext",
-        .n_params = 5,
+        .n_params = 3,
         .params = {STRUCT_UCONTEXT_PTR, STRUCT_UCONTEXT_PTR, LONG}
     },
 #endif
@@ -4030,7 +4030,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_swapoff,
         .name = "swapoff",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -4038,7 +4038,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_swapon,
         .name = "swapon",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -4046,7 +4046,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_switch_endian,
         .name = "switch_endian",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -4054,7 +4054,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_symlink,
         .name = "symlink",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, CHAR_PTR}
     },
 #endif
@@ -4062,7 +4062,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_symlinkat,
         .name = "symlinkat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CHAR_PTR, INT, CHAR_PTR}
     },
 #endif
@@ -4070,7 +4070,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sync,
         .name = "sync",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -4078,7 +4078,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sync_file_range,
         .name = "sync_file_range",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, LOFF_T, LOFF_T, UNSIGNED_INT}
     },
 #endif
@@ -4086,7 +4086,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sync_file_range2,
         .name = "sync_file_range2",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, UNSIGNED_INT, LOFF_T, LOFF_T}
     },
 #endif
@@ -4094,7 +4094,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_syncfs,
         .name = "syncfs",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -4102,7 +4102,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sysfs,
         .name = "sysfs",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -4110,7 +4110,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sysinfo,
         .name = "sysinfo",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_SYSINFO_PTR}
     },
 #endif
@@ -4118,7 +4118,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_syslog,
         .name = "syslog",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, INT}
     },
 #endif
@@ -4126,7 +4126,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sysmips,
         .name = "sysmips",
-        .n_params = 5,
+        .n_params = 3,
         .params = {LONG, LONG, LONG}
     },
 #endif
@@ -4134,7 +4134,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_tee,
         .name = "tee",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, SIZE_T, UNSIGNED_INT}
     },
 #endif
@@ -4142,7 +4142,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_tgkill,
         .name = "tgkill",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, PID_T, INT}
     },
 #endif
@@ -4150,7 +4150,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_time,
         .name = "time",
-        .n_params = 5,
+        .n_params = 1,
         .params = {__KERNEL_OLD_TIME_T_PTR}
     },
 #endif
@@ -4158,7 +4158,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_time32,
         .name = "time32",
-        .n_params = 5,
+        .n_params = 1,
         .params = {OLD_TIME32_T_PTR}
     },
 #endif
@@ -4166,7 +4166,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_create,
         .name = "timer_create",
-        .n_params = 5,
+        .n_params = 3,
         .params = {CLOCKID_T, STRUCT_SIGEVENT_PTR, TIMER_T_PTR}
     },
 #endif
@@ -4174,7 +4174,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_delete,
         .name = "timer_delete",
-        .n_params = 5,
+        .n_params = 1,
         .params = {TIMER_T}
     },
 #endif
@@ -4182,7 +4182,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timerfd_create,
         .name = "timerfd_create",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, INT}
     },
 #endif
@@ -4190,7 +4190,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timerfd_gettime,
         .name = "timerfd_gettime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
 #endif
@@ -4198,7 +4198,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timerfd_gettime32,
         .name = "timerfd_gettime32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {INT, STRUCT_OLD_ITIMERSPEC32_PTR}
     },
 #endif
@@ -4206,7 +4206,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timerfd_settime,
         .name = "timerfd_settime",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, STRUCT___KERNEL_ITIMERSPEC_PTR,
             STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
@@ -4215,7 +4215,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timerfd_settime32,
         .name = "timerfd_settime32",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, INT, STRUCT_OLD_ITIMERSPEC32_PTR,
             STRUCT_OLD_ITIMERSPEC32_PTR}
     },
@@ -4224,7 +4224,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_getoverrun,
         .name = "timer_getoverrun",
-        .n_params = 5,
+        .n_params = 1,
         .params = {TIMER_T}
     },
 #endif
@@ -4232,7 +4232,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_gettime,
         .name = "timer_gettime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {TIMER_T, STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
 #endif
@@ -4240,7 +4240,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_gettime32,
         .name = "timer_gettime32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {TIMER_T, STRUCT_OLD_ITIMERSPEC32_PTR}
     },
 #endif
@@ -4248,7 +4248,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_settime,
         .name = "timer_settime",
-        .n_params = 5,
+        .n_params = 4,
         .params = {TIMER_T, INT, STRUCT___KERNEL_ITIMERSPEC_PTR,
             STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
@@ -4257,7 +4257,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_timer_settime32,
         .name = "timer_settime32",
-        .n_params = 5,
+        .n_params = 4,
         .params = {TIMER_T, INT, STRUCT_OLD_ITIMERSPEC32_PTR,
             STRUCT_OLD_ITIMERSPEC32_PTR}
     },
@@ -4266,7 +4266,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_times,
         .name = "times",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_TMS_PTR}
     },
 #endif
@@ -4274,7 +4274,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_tkill,
         .name = "tkill",
-        .n_params = 5,
+        .n_params = 2,
         .params = {PID_T, INT}
     },
 #endif
@@ -4282,7 +4282,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_truncate,
         .name = "truncate",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, LONG}
     },
 #endif
@@ -4290,7 +4290,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_truncate64,
         .name = "truncate64",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, LOFF_T}
     },
 #endif
@@ -4298,7 +4298,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_umask,
         .name = "umask",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -4306,7 +4306,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_umount,
         .name = "umount",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, INT}
     },
 #endif
@@ -4314,7 +4314,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_uname,
         .name = "uname",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_OLD_UTSNAME_PTR}
     },
 #endif
@@ -4322,7 +4322,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_unlink,
         .name = "unlink",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -4330,7 +4330,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_unlinkat,
         .name = "unlinkat",
-        .n_params = 5,
+        .n_params = 3,
         .params = {INT, CHAR_PTR, INT}
     },
 #endif
@@ -4338,7 +4338,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_unshare,
         .name = "unshare",
-        .n_params = 5,
+        .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
 #endif
@@ -4346,7 +4346,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_uselib,
         .name = "uselib",
-        .n_params = 5,
+        .n_params = 1,
         .params = {CHAR_PTR}
     },
 #endif
@@ -4354,7 +4354,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_userfaultfd,
         .name = "userfaultfd",
-        .n_params = 5,
+        .n_params = 1,
         .params = {INT}
     },
 #endif
@@ -4362,7 +4362,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ustat,
         .name = "ustat",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED, STRUCT_USTAT_PTR}
     },
 #endif
@@ -4370,7 +4370,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_utime,
         .name = "utime",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_UTIMBUF_PTR}
     },
 #endif
@@ -4378,7 +4378,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_utime32,
         .name = "utime32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_OLD_UTIMBUF32_PTR}
     },
 #endif
@@ -4386,7 +4386,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_utimensat,
         .name = "utimensat",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, CHAR_PTR, STRUCT___KERNEL_TIMESPEC_PTR, INT}
     },
 #endif
@@ -4394,7 +4394,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_utimensat_time32,
         .name = "utimensat_time32",
-        .n_params = 5,
+        .n_params = 4,
         .params = {UNSIGNED_INT, CHAR_PTR, STRUCT_OLD_TIMESPEC32_PTR, INT}
     },
 #endif
@@ -4402,7 +4402,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_utimes,
         .name = "utimes",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT___KERNEL_OLD_TIMEVAL_PTR}
     },
 #endif
@@ -4410,7 +4410,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_utimes_time32,
         .name = "utimes_time32",
-        .n_params = 5,
+        .n_params = 2,
         .params = {CHAR_PTR, STRUCT_OLD_TIMEVAL32_PTR}
     },
 #endif
@@ -4427,7 +4427,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_vfork,
         .name = "vfork",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -4435,7 +4435,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_vhangup,
         .name = "vhangup",
-        .n_params = 5,
+        .n_params = 0,
         .params = {}
     },
 #endif
@@ -4443,7 +4443,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_vm86,
         .name = "vm86",
-        .n_params = 5,
+        .n_params = 2,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
@@ -4451,7 +4451,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_vm86old,
         .name = "vm86old",
-        .n_params = 5,
+        .n_params = 1,
         .params = {STRUCT_VM86_STRUCT_PTR}
     },
 #endif
@@ -4459,7 +4459,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_vmsplice,
         .name = "vmsplice",
-        .n_params = 5,
+        .n_params = 4,
         .params = {INT, STRUCT_IOVEC_PTR, UNSIGNED_LONG, UNSIGNED_INT}
     },
 #endif
@@ -4467,7 +4467,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_wait4,
         .name = "wait4",
-        .n_params = 5,
+        .n_params = 4,
         .params = {PID_T, INT_PTR, INT, STRUCT_RUSAGE_PTR}
     },
 #endif
@@ -4483,7 +4483,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_waitpid,
         .name = "waitpid",
-        .n_params = 5,
+        .n_params = 3,
         .params = {PID_T, INT_PTR, INT}
     },
 #endif
@@ -4491,7 +4491,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_writev,
         .name = "writev",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG}
     },
 #endif
@@ -4499,7 +4499,7 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_write,
         .name = "write",
-        .n_params = 5,
+        .n_params = 3,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T}
     }
 #endif
