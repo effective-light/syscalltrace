@@ -1,6 +1,12 @@
 #ifndef _CTRACE_H_
 #define _CTRACE_H_
 
+#if INTPTR_MAX == INT32_MAX
+#define __32BIT__
+#elif INTPTR_MAX != INT64_MAX
+#error Unknown pointer size or missing size macros!
+#endif
+
 #include <stdint.h>
 
 #include <unistd.h>
@@ -166,82 +172,6 @@ typedef struct syscall_s {
 } syscall_t;
 
 syscall_t syscalls[] = {
-#ifdef SYS_32_ftruncate64
-    {
-        .nr = SYS_32_ftruncate64,
-        .name = "32_ftruncate64",
-        .n_params = 4,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_32_llseek
-    {
-        .nr = SYS_32_llseek,
-        .name = "32_llseek",
-        .n_params = 5,
-        .params = {UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT, LOFF_T_PTR,
-            UNSIGNED_INT}
-    },
-#endif
-#ifdef SYS_32_personality
-    {
-        .nr = SYS_32_personality,
-        .name = "32_personality",
-        .n_params = 1,
-        .params = {UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_32_pread
-    {
-        .nr = SYS_32_pread,
-        .name = "32_pread",
-        .n_params = 6,
-        .params = {UNSIGNED_LONG, CHAR_PTR, SIZE_T, UNSIGNED_LONG,
-            UNSIGNED_LONG, UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_32_pwrite
-    {
-        .nr = SYS_32_pwrite,
-        .name = "32_pwrite",
-        .n_params = 6,
-        .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, U32, U64, U64}
-    },
-#endif
-#ifdef SYS_32_sigaction
-    {
-        .nr = SYS_32_sigaction,
-        .name = "32_sigaction",
-        .n_params = 3,
-        .params = {LONG, STRUCT_COMPAT_SIGACTION_PTR,
-            STRUCT_COMPAT_SIGACTION_PTR}
-    },
-#endif
-#ifdef SYS_32_truncate64
-    {
-        .nr = SYS_32_truncate64,
-        .name = "32_truncate64",
-        .n_params = 4,
-        .params = {CHAR_PTR, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_64_mremap
-    {
-        .nr = SYS_64_mremap,
-        .name = "64_mremap",
-        .n_params = 5,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
-            UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_64_munmap
-    {
-        .nr = SYS_64_munmap,
-        .name = "64_munmap",
-        .n_params = 2,
-        .params = {UNSIGNED_LONG, SIZE_T}
-    },
-#endif
 #ifdef SYS_accept
     {
         .nr = SYS_accept,
@@ -344,14 +274,6 @@ syscall_t syscalls[] = {
         .name = "arc_usr_cmpxchg",
         .n_params = 3,
         .params = {INT_PTR, INT, INT}
-    },
-#endif
-#ifdef SYS_arm64_personality
-    {
-        .nr = SYS_arm64_personality,
-        .name = "arm64_personality",
-        .n_params = 1,
-        .params = {UNSIGNED_INT}
     },
 #endif
 #ifdef SYS_bdflush
@@ -597,18 +519,10 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR, UMODE_T}
     },
 #endif
-#ifdef SYS_csky_fadvise64_64
+#ifdef SYS_sys_debug_setcontext
     {
-        .nr = SYS_csky_fadvise64_64,
-        .name = "csky_fadvise64_64",
-        .n_params = 4,
-        .params = {INT, INT, LOFF_T, LOFF_T}
-    },
-#endif
-#ifdef SYS_debug_setcontext
-    {
-        .nr = SYS_debug_setcontext,
-        .name = "debug_setcontext",
+        .nr = SYS_sys_debug_setcontext,
+        .name = "sys_debug_setcontext",
         .n_params = 3,
         .params = {STRUCT_UCONTEXT_PTR, INT, STRUCT_SIG_DBG_OP_PTR}
     },
@@ -762,32 +676,43 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_fadvise64,
         .name = "fadvise64",
+#ifdef __i386__
+        .n_params = 5,
+        .params = {INT, UNSIGNED_INT, UNSIGNED_INT, SIZE_T, INT}
+#else
         .n_params = 4,
         .params = {INT, LOFF_T, SIZE_T, INT}
+#endif
     },
 #endif
 #ifdef SYS_fadvise64_64
     {
         .nr = SYS_fadvise64_64,
         .name = "fadvise64_64",
-        .n_params = 4,
-        .params = {INT, LOFF_T, LOFF_T, INT}
-    },
-#endif
-#ifdef SYS_fadvise64_64_wrapper
-    {
-        .nr = SYS_fadvise64_64_wrapper,
-        .name = "fadvise64_64_wrapper",
+#if defined(__nds32__) || defined(__csky__)
         .n_params = 4,
         .params = {INT, INT, LOFF_T, LOFF_T}
+#elif defined(__i386__)
+        .n_params = 6,
+        .params = {INT, __U32, __U32, __U32, __U32, INT}
+#else
+        .n_params = 4,
+        .params = {INT, LOFF_T, LOFF_T, INT}
+#endif
     },
 #endif
 #ifdef SYS_fallocate
     {
         .nr = SYS_fallocate,
         .name = "fallocate",
+#ifdef __i386__
+        .n_params = 6,
+        .params = {INT, INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT,
+            UNSIGNED_INT}
+#else
         .n_params = 4,
         .params = {INT, INT, LOFF_T, LOFF_T}
+#endif
     },
 #endif
 #ifdef SYS_fanotify_init
@@ -974,10 +899,10 @@ syscall_t syscalls[] = {
         .params = {INT, CHAR_PTR, UNSIGNED_INT}
     },
 #endif
-#ifdef SYS_fstat
+#ifdef SYS_oldfstat
     {
-        .nr = SYS_fstat,
-        .name = "fstat",
+        .nr = SYS_oldfstat,
+        .name = "oldfstat",
         .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT___OLD_KERNEL_STAT_PTR}
     },
@@ -1034,8 +959,16 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ftruncate64,
         .name = "ftruncate64",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 4,
+        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
+#elif defined(__i386__)
+        .n_params = 3,
+        .params = {UNSIGNED_INT, UNSIGNED_LONG, UNSIGNED_LONG}
+#else
         .n_params = 2,
         .params = {UNSIGNED_INT, LOFF_T}
+#endif
     },
 #endif
 #ifdef SYS_futex
@@ -1208,6 +1141,14 @@ syscall_t syscalls[] = {
             UNSIGNED_LONG}
     },
 #endif
+#ifdef SYS_old_getpagesize
+    {
+        .nr = SYS_old_getpagesize,
+        .name = "old_getpagesize",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
 #ifdef SYS_getpagesize
     {
         .nr = SYS_getpagesize,
@@ -1307,7 +1248,11 @@ syscall_t syscalls[] = {
 #ifdef SYS_getrlimit
     {
         .nr = SYS_getrlimit,
+#ifdef __bfin__
+        .name = "old_getrlimit",
+#else
         .name = "getrlimit",
+#endif
         .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_RLIMIT_PTR}
     },
@@ -1422,80 +1367,6 @@ syscall_t syscalls[] = {
         .name = "getxuid",
         .n_params = 0,
         .params = {}
-    },
-#endif
-#ifdef SYS_ia32_fadvise64
-    {
-        .nr = SYS_ia32_fadvise64,
-        .name = "ia32_fadvise64",
-        .n_params = 5,
-        .params = {INT, UNSIGNED_INT, UNSIGNED_INT, SIZE_T, INT}
-    },
-#endif
-#ifdef SYS_ia32_fadvise64_64
-    {
-        .nr = SYS_ia32_fadvise64_64,
-        .name = "ia32_fadvise64_64",
-        .n_params = 6,
-        .params = {INT, __U32, __U32, __U32, __U32, INT}
-    },
-#endif
-#ifdef SYS_ia32_fallocate
-    {
-        .nr = SYS_ia32_fallocate,
-        .name = "ia32_fallocate",
-        .n_params = 6,
-        .params = {INT, INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT,
-            UNSIGNED_INT}
-    },
-#endif
-#ifdef SYS_ia32_ftruncate64
-    {
-        .nr = SYS_ia32_ftruncate64,
-        .name = "ia32_ftruncate64",
-        .n_params = 3,
-        .params = {UNSIGNED_INT, UNSIGNED_LONG, UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_ia32_pread64
-    {
-        .nr = SYS_ia32_pread64,
-        .name = "ia32_pread64",
-        .n_params = 5,
-        .params = {UNSIGNED_INT, CHAR_PTR, U32, U32, U32}
-    },
-#endif
-#ifdef SYS_ia32_pwrite64
-    {
-        .nr = SYS_ia32_pwrite64,
-        .name = "ia32_pwrite64",
-        .n_params = 5,
-        .params = {UNSIGNED_INT, CHAR_PTR, U32, U32, U32}
-    },
-#endif
-#ifdef SYS_ia32_readahead
-    {
-        .nr = SYS_ia32_readahead,
-        .name = "ia32_readahead",
-        .n_params = 4,
-        .params = {INT, UNSIGNED_INT, UNSIGNED_INT, SIZE_T}
-    },
-#endif
-#ifdef SYS_ia32_sync_file_range
-    {
-        .nr = SYS_ia32_sync_file_range,
-        .name = "ia32_sync_file_range",
-        .n_params = 6,
-        .params = {INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT,
-            INT}
-    },
-#endif
-#ifdef SYS_ia32_truncate64
-    {
-        .nr = SYS_ia32_truncate64,
-        .name = "ia32_truncate64",
-        .n_params = 3,
-        .params = {CHAR_PTR, UNSIGNED_LONG, UNSIGNED_LONG}
     },
 #endif
 #ifdef SYS_init_module
@@ -1674,9 +1545,14 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_ipc,
         .name = "ipc",
+#ifdef __s390__
+        .n_params = 5,
+        .params = {UINT, INT, UNSIGNED_LONG, UNSIGNED_LONG, VOID_PTR}
+#else
         .n_params = 6,
         .params = {UNSIGNED_INT, INT, UNSIGNED_LONG, UNSIGNED_LONG, VOID_PTR,
             LONG}
+#endif
     },
 #endif
 #ifdef SYS_kcmp
@@ -1798,8 +1674,13 @@ syscall_t syscalls[] = {
         .nr = SYS_llseek,
         .name = "llseek",
         .n_params = 5,
+#if defined(__mips__) && defined(__32BIT__)
+        .params = {UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT, LOFF_T_PTR,
+            UNSIGNED_INT}
+#else
         .params = {UNSIGNED_INT, UNSIGNED_LONG, UNSIGNED_LONG, LOFF_T_PTR,
             UNSIGNED_INT}
+#endif
     },
 #endif
 #ifdef SYS_lremovexattr
@@ -1826,10 +1707,10 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR, CHAR_PTR, VOID_PTR, SIZE_T, INT}
     },
 #endif
-#ifdef SYS_lstat
+#ifdef SYS_oldlstat
     {
-        .nr = SYS_lstat,
-        .name = "lstat",
+        .nr = SYS_oldlstat,
+        .name = "oldlstat",
         .n_params = 2,
         .params = {CHAR_PTR, STRUCT___OLD_KERNEL_STAT_PTR}
     },
@@ -1899,24 +1780,6 @@ syscall_t syscalls[] = {
         .params = {UNSIGNED_LONG, SIZE_T, UNSIGNED_CHAR_PTR}
     },
 #endif
-#ifdef SYS_mips_mmap
-    {
-        .nr = SYS_mips_mmap,
-        .name = "mips_mmap",
-        .n_params = 6,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
-            UNSIGNED_LONG, OFF_T}
-    },
-#endif
-#ifdef SYS_mips_mmap2
-    {
-        .nr = SYS_mips_mmap2,
-        .name = "mips_mmap2",
-        .n_params = 6,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
-            UNSIGNED_LONG, UNSIGNED_LONG}
-    },
-#endif
 #ifdef SYS_mkdir
     {
         .nr = SYS_mkdir,
@@ -1977,9 +1840,19 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_mmap,
         .name = "mmap",
+#if defined(__s390__) || defined(__s390x__) || defined(__m68k__) \
+        || defined(__i386__) || defined(__arm__)
+        .n_params = 1,
+        .params = {STRUCT_MMAP_ARG_STRUCT_PTR}
+#elif defined(__mips__)
+        .n_params = 6,
+        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
+            UNSIGNED_LONG, OFF_T}
+#else
         .n_params = 6,
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
+#endif
     },
 #endif
 #ifdef SYS_mmap2
@@ -1987,17 +1860,15 @@ syscall_t syscalls[] = {
         .nr = SYS_mmap2,
         .name = "mmap2",
         .n_params = 6,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
-            UNSIGNED_LONG, OFF_T}
-    },
-#endif
-#ifdef SYS_mmap_pgoff
-    {
-        .nr = SYS_mmap_pgoff,
-        .name = "mmap_pgoff",
-        .n_params = 6,
+#if defined(__mips__) || defined(__xtensa__) || defined(__AVR__) \
+        || defined(__microblaze__) || defined(__m68k__) || defined(__i386__) \
+        || defined(__bfin__) || defined(__ia64__)
         .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
+#else
+        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
+            UNSIGNED_LONG, OFF_T}
+#endif
     },
 #endif
 #ifdef SYS_modify_ldt
@@ -2213,10 +2084,10 @@ syscall_t syscalls[] = {
         .params = {STRUCT_OLD_TIMESPEC32_PTR, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_newfstat
+#ifdef SYS_fstat
     {
-        .nr = SYS_newfstat,
-        .name = "newfstat",
+        .nr = SYS_fstat,
+        .name = "fstat",
         .n_params = 2,
         .params = {UNSIGNED_INT, STRUCT_STAT_PTR}
     },
@@ -2229,26 +2100,26 @@ syscall_t syscalls[] = {
         .params = {INT, CHAR_PTR, STRUCT_STAT_PTR, INT}
     },
 #endif
-#ifdef SYS_newlstat
+#ifdef SYS_lstat
     {
-        .nr = SYS_newlstat,
-        .name = "newlstat",
+        .nr = SYS_lstat,
+        .name = "lstat",
         .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STAT_PTR}
     },
 #endif
-#ifdef SYS_newstat
+#ifdef SYS_stat
     {
-        .nr = SYS_newstat,
-        .name = "newstat",
+        .nr = SYS_stat,
+        .name = "stat",
         .n_params = 2,
         .params = {CHAR_PTR, STRUCT_STAT_PTR}
     },
 #endif
-#ifdef SYS_newuname
+#ifdef SYS_uname
     {
-        .nr = SYS_newuname,
-        .name = "newuname",
+        .nr = SYS_uname,
+        .name = "uname",
         .n_params = 1,
         .params = {STRUCT_NEW_UTSNAME_PTR}
     },
@@ -2259,14 +2130,6 @@ syscall_t syscalls[] = {
         .name = "nice",
         .n_params = 1,
         .params = {INT}
-    },
-#endif
-#ifdef SYS_nis_syscall
-    {
-        .nr = SYS_nis_syscall,
-        .name = "nis_syscall",
-        .n_params = 0,
-        .params = {}
     },
 #endif
 #ifdef SYS_ni_syscall
@@ -2285,60 +2148,20 @@ syscall_t syscalls[] = {
         .params = {STRUCT_TIMEX32_PTR}
     },
 #endif
-#ifdef SYS_old_getrlimit
+#ifdef SYS_readdir
     {
-        .nr = SYS_old_getrlimit,
-        .name = "old_getrlimit",
-        .n_params = 2,
-        .params = {UNSIGNED_INT, STRUCT_RLIMIT_PTR}
-    },
-#endif
-#ifdef SYS_old_mmap
-    {
-        .nr = SYS_old_mmap,
-        .name = "old_mmap",
-        .n_params = 1,
-        .params = {STRUCT_MMAP_ARG_STRUCT_PTR}
-    },
-#endif
-#ifdef SYS_old_msgctl
-    {
-        .nr = SYS_old_msgctl,
-        .name = "old_msgctl",
-        .n_params = 3,
-        .params = {INT, INT, STRUCT_MSQID_DS_PTR}
-    },
-#endif
-#ifdef SYS_old_readdir
-    {
-        .nr = SYS_old_readdir,
-        .name = "old_readdir",
+        .nr = SYS_readdir,
+        .name = "readdir",
         .n_params = 3,
         .params = {UNSIGNED_INT, STRUCT_OLD_LINUX_DIRENT_PTR, UNSIGNED_INT}
     },
 #endif
-#ifdef SYS_old_select
+#ifdef SYS__newselect
     {
-        .nr = SYS_old_select,
-        .name = "old_select",
+        .nr = SYS__newselect,
+        .name = "_newselect",
         .n_params = 1,
         .params = {STRUCT_SEL_ARG_STRUCT_PTR}
-    },
-#endif
-#ifdef SYS_old_semctl
-    {
-        .nr = SYS_old_semctl,
-        .name = "old_semctl",
-        .n_params = 4,
-        .params = {INT, INT, INT, UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_old_shmctl
-    {
-        .nr = SYS_old_shmctl,
-        .name = "old_shmctl",
-        .n_params = 3,
-        .params = {INT, INT, STRUCT_SHMID_DS_PTR}
     },
 #endif
 #ifdef SYS_oldumount
@@ -2349,10 +2172,10 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR}
     },
 #endif
-#ifdef SYS_olduname
+#ifdef SYS_oldolduname
     {
-        .nr = SYS_olduname,
-        .name = "olduname",
+        .nr = SYS_oldolduname,
+        .name = "oldolduname",
         .n_params = 1,
         .params = {STRUCT_OLDOLD_UTSNAME_PTR}
     },
@@ -2397,10 +2220,10 @@ syscall_t syscalls[] = {
         .params = {INT, CHAR_PTR, UNSIGNED}
     },
 #endif
-#ifdef SYS_osf_brk
+#ifdef SYS_osf_sbrk
     {
-        .nr = SYS_osf_brk,
-        .name = "osf_brk",
+        .nr = SYS_osf_sbrk,
+        .name = "osf_sbrk",
         .n_params = 1,
         .params = {UNSIGNED_LONG}
     },
@@ -2445,14 +2268,6 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR, INT}
     },
 #endif
-#ifdef SYS_osf_getpriority
-    {
-        .nr = SYS_osf_getpriority,
-        .name = "osf_getpriority",
-        .n_params = 2,
-        .params = {INT, INT}
-    },
-#endif
 #ifdef SYS_osf_getrusage
     {
         .nr = SYS_osf_getrusage,
@@ -2485,15 +2300,6 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR, STRUCT_OSF_STAT_PTR}
     },
 #endif
-#ifdef SYS_osf_mmap
-    {
-        .nr = SYS_osf_mmap,
-        .name = "osf_mmap",
-        .n_params = 6,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
-            UNSIGNED_LONG, UNSIGNED_LONG}
-    },
-#endif
 #ifdef SYS_osf_mount
     {
         .nr = SYS_osf_mount,
@@ -2508,14 +2314,6 @@ syscall_t syscalls[] = {
         .name = "osf_proplist_syscall",
         .n_params = 2,
         .params = {ENUM_PL_CODE, UNION_PL_ARGS_PTR}
-    },
-#endif
-#ifdef SYS_osf_readv
-    {
-        .nr = SYS_osf_readv,
-        .name = "osf_readv",
-        .n_params = 3,
-        .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG}
     },
 #endif
 #ifdef SYS_osf_select
@@ -2551,12 +2349,12 @@ syscall_t syscalls[] = {
         .params = {STRUCT_TIMEVAL32_PTR, STRUCT_TIMEZONE_PTR}
     },
 #endif
-#ifdef SYS_osf_sigaction
+#ifdef SYS_osf_old_sigaction
     {
         .nr = SYS_osf_sigaction,
-        .name = "osf_sigaction",
-        .n_params = 3,
-        .params = {INT, STRUCT_OSF_SIGACTION_PTR, STRUCT_OSF_SIGACTION_PTR}
+        .name = "SYS_osf_old_sigaction",
+        .n_params = 0,
+        .params = {}
     },
 #endif
 #ifdef SYS_osf_sigprocmask
@@ -2639,14 +2437,6 @@ syscall_t syscalls[] = {
         .params = {PID_T, INT_PTR, INT, STRUCT_RUSAGE32_PTR}
     },
 #endif
-#ifdef SYS_osf_writev
-    {
-        .nr = SYS_osf_writev,
-        .name = "osf_writev",
-        .n_params = 3,
-        .params = {UNSIGNED_LONG, STRUCT_IOVEC_PTR, UNSIGNED_LONG}
-    },
-#endif
 #ifdef SYS_pause
     {
         .nr = SYS_pause,
@@ -2694,7 +2484,11 @@ syscall_t syscalls[] = {
         .nr = SYS_personality,
         .name = "personality",
         .n_params = 1,
+#if (defined(__mips__) && defined(__32BIT__)) || defined(__sparc64__)
+        .params = {UNSIGNED_LONG}
+#else
         .params = {UNSIGNED_INT}
+#endif
     },
 #endif
 #ifdef SYS_pidfd_getfd
@@ -2725,8 +2519,13 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pipe,
         .name = "pipe",
+#if defined(__alpha__) || defined(__sparc__)
+        .n_params = 0,
+        .params = {}
+#else
         .n_params = 1,
         .params = {INT_PTR}
+#endif
     },
 #endif
 #ifdef SYS_pipe2
@@ -2808,8 +2607,17 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pread64,
         .name = "pread64",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 6,
+        .params = {UNSIGNED_LONG, CHAR_PTR, SIZE_T, UNSIGNED_LONG,
+            UNSIGNED_LONG, UNSIGNED_LONG}
+#elif defined(__i386__)
+        .n_params = 5,
+        .params = {UNSIGNED_INT, CHAR_PTR, U32, U32, U32}
+#else
         .n_params = 4,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, LOFF_T}
+#endif
     },
 #endif
 #ifdef SYS_preadv
@@ -2895,8 +2703,16 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_pwrite64,
         .name = "pwrite64",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 6,
+        .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, U32, U64, U64}
+#elif defined(__i386__)
+        .n_params = 5,
+        .params = {UNSIGNED_INT, CHAR_PTR, U32, U32, U32}
+#else
         .n_params = 4,
         .params = {UNSIGNED_INT, CHAR_PTR, SIZE_T, LOFF_T}
+#endif
     },
 #endif
 #ifdef SYS_pwritev
@@ -2937,8 +2753,13 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_readahead,
         .name = "readahead",
+#ifdef __i386__
+        .n_params = 4,
+        .params = {INT, UNSIGNED_INT, UNSIGNED_INT, SIZE_T}
+#else
         .n_params = 3,
         .params = {INT, LOFF_T, SIZE_T}
+#endif
     },
 #endif
 #ifdef SYS_readlink
@@ -3187,14 +3008,6 @@ syscall_t syscalls[] = {
         .params = {INT, STRUCT_GS_CB_PTR}
     },
 #endif
-#ifdef SYS_s390_ipc
-    {
-        .nr = SYS_s390_ipc,
-        .name = "s390_ipc",
-        .n_params = 5,
-        .params = {UINT, INT, UNSIGNED_LONG, UNSIGNED_LONG, VOID_PTR}
-    },
-#endif
 #ifdef SYS_s390_pci_mmio_read
     {
         .nr = SYS_s390_pci_mmio_read,
@@ -3209,14 +3022,6 @@ syscall_t syscalls[] = {
         .name = "s390_pci_mmio_write",
         .n_params = 3,
         .params = {UNSIGNED_LONG, VOID_PTR, SIZE_T}
-    },
-#endif
-#ifdef SYS_s390_personality
-    {
-        .nr = SYS_s390_personality,
-        .name = "s390_personality",
-        .n_params = 1,
-        .params = {UNSIGNED_INT}
     },
 #endif
 #ifdef SYS_s390_runtime_instr
@@ -3773,7 +3578,12 @@ syscall_t syscalls[] = {
         .nr = SYS_sigaction,
         .name = "sigaction",
         .n_params = 3,
+#if defined(__mips__) && defined(__32BIT__)
+        .params = {LONG, STRUCT_COMPAT_SIGACTION_PTR,
+            STRUCT_COMPAT_SIGACTION_PTR}
+#else
         .params = {INT, STRUCT_OLD_SIGACTION_PTR, STRUCT_OLD_SIGACTION_PTR}
+#endif
     },
 #endif
 #ifdef SYS_sigaltstack
@@ -3864,64 +3674,6 @@ syscall_t syscalls[] = {
         .params = {INT, INT, INT, INT_PTR}
     },
 #endif
-#ifdef SYS_sparc64_personality
-    {
-        .nr = SYS_sparc64_personality,
-        .name = "sparc64_personality",
-        .n_params = 1,
-        .params = {UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_sparc_adjtimex
-    {
-        .nr = SYS_sparc_adjtimex,
-        .name = "sparc_adjtimex",
-        .n_params = 1,
-        .params = {STRUCT___KERNEL_TIMEX_PTR}
-    },
-#endif
-#ifdef SYS_sparc_clock_adjtime
-    {
-        .nr = SYS_sparc_clock_adjtime,
-        .name = "sparc_clock_adjtime",
-        .n_params = 2,
-        .params = {CLOCKID_T, STRUCT___KERNEL_TIMEX_PTR}
-    },
-#endif
-#ifdef SYS_sparc_ipc
-    {
-        .nr = SYS_sparc_ipc,
-        .name = "sparc_ipc",
-        .n_params = 6,
-        .params = {UNSIGNED_INT, INT, UNSIGNED_LONG, UNSIGNED_LONG, VOID_PTR,
-            LONG}
-    },
-#endif
-#ifdef SYS_sparc_pipe
-    {
-        .nr = SYS_sparc_pipe,
-        .name = "sparc_pipe",
-        .n_params = 0,
-        .params = {}
-    },
-#endif
-#ifdef SYS_sparc_remap_file_pages
-    {
-        .nr = SYS_sparc_remap_file_pages,
-        .name = "sparc_remap_file_pages",
-        .n_params = 5,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
-            UNSIGNED_LONG}
-    },
-#endif
-#ifdef SYS_sparc_sigaction
-    {
-        .nr = SYS_sparc_sigaction,
-        .name = "sparc_sigaction",
-        .n_params = 3,
-        .params = {INT, STRUCT_OLD_SIGACTION_PTR, STRUCT_OLD_SIGACTION_PTR}
-    },
-#endif
 #ifdef SYS_splice
     {
         .nr = SYS_splice,
@@ -3954,10 +3706,10 @@ syscall_t syscalls[] = {
         .params = {INT}
     },
 #endif
-#ifdef SYS_stat
+#ifdef SYS_oldstat
     {
-        .nr = SYS_stat,
-        .name = "stat",
+        .nr = SYS_oldstat,
+        .name = "oldstat",
         .n_params = 2,
         .params = {CHAR_PTR, STRUCT___OLD_KERNEL_STAT_PTR}
     },
@@ -4078,8 +3830,14 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_sync_file_range,
         .name = "sync_file_range",
+#ifdef __i386__
+        .n_params = 6,
+        .params = {INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT, UNSIGNED_INT,
+            INT}
+#else
         .n_params = 4,
         .params = {INT, LOFF_T, LOFF_T, UNSIGNED_INT}
+#endif
     },
 #endif
 #ifdef SYS_sync_file_range2
@@ -4290,8 +4048,16 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_truncate64,
         .name = "truncate64",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 4,
+        .params = {CHAR_PTR, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG}
+#elif defined(__i386__)
+        .n_params = 3,
+        .params = {CHAR_PTR, UNSIGNED_LONG, UNSIGNED_LONG}
+#else
         .n_params = 2,
         .params = {CHAR_PTR, LOFF_T}
+#endif
     },
 #endif
 #ifdef SYS_umask
@@ -4310,10 +4076,10 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR, INT}
     },
 #endif
-#ifdef SYS_uname
+#ifdef SYS_olduname
     {
-        .nr = SYS_uname,
-        .name = "uname",
+        .nr = SYS_olduname,
+        .name = "olduname",
         .n_params = 1,
         .params = {STRUCT_OLD_UTSNAME_PTR}
     },
