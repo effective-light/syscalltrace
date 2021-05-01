@@ -217,15 +217,19 @@ syscall_t syscalls[] = {
         .nr = SYS_adjtimex,
         .name = "adjtimex",
         .n_params = 1,
+#ifdef __32BIT__
+        .params = {STRUCT_OLD_TIMEX32_PTR}
+#else
         .params = {STRUCT___KERNEL_TIMEX_PTR}
+#endif
     },
 #endif
-#ifdef SYS_adjtimex_time32
+#ifdef SYS_old_adjtimex
     {
-        .nr = SYS_adjtimex_time32,
-        .name = "adjtimex_time32",
+        .nr = SYS_old_adjtimex,
+        .name = "old_adjtimex",
         .n_params = 1,
-        .params = {STRUCT_OLD_TIMEX32_PTR}
+        .params = {STRUCT_TIMEX32_PTR}
     },
 #endif
 #ifdef SYS_alarm
@@ -361,15 +365,15 @@ syscall_t syscalls[] = {
         .nr = SYS_chown,
         .name = "chown",
         .n_params = 3,
-        .params = {CHAR_PTR, UID_T, GID_T}
+        .params = {CHAR_PTR, OLD_UID_T, OLD_GID_T}
     },
 #endif
-#ifdef SYS_chown16
+#ifdef SYS_chown32
     {
-        .nr = SYS_chown16,
-        .name = "chown16",
+        .nr = SYS_chown32,
+        .name = "chown32",
         .n_params = 3,
-        .params = {CHAR_PTR, OLD_UID_T, OLD_GID_T}
+        .params = {CHAR_PTR, UID_T, GID_T}
     },
 #endif
 #ifdef SYS_chroot
@@ -385,15 +389,15 @@ syscall_t syscalls[] = {
         .nr = SYS_clock_adjtime,
         .name = "clock_adjtime",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT___KERNEL_TIMEX_PTR}
+        .params = {CLOCKID_T, STRUCT_OLD_TIMEX32_PTR}
     },
 #endif
-#ifdef SYS_clock_adjtime32
+#ifdef SYS_clock_adjtime64
     {
-        .nr = SYS_clock_adjtime32,
-        .name = "clock_adjtime32",
+        .nr = SYS_clock_adjtime64,
+        .name = "clock_adjtime",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT_OLD_TIMEX32_PTR}
+        .params = {CLOCKID_T, STRUCT___KERNEL_TIMEX_PTR}
     },
 #endif
 #ifdef SYS_clock_getres
@@ -401,15 +405,15 @@ syscall_t syscalls[] = {
         .nr = SYS_clock_getres,
         .name = "clock_getres",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
+        .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_clock_getres_time32
+#ifdef SYS_clock_getres_time64
     {
-        .nr = SYS_clock_getres_time32,
-        .name = "clock_getres_time32",
+        .nr = SYS_clock_getres_time64,
+        .name = "clock_getres",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
+        .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_clock_gettime
@@ -417,15 +421,15 @@ syscall_t syscalls[] = {
         .nr = SYS_clock_gettime,
         .name = "clock_gettime",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
+        .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_clock_gettime32
+#ifdef SYS_clock_gettime64
     {
-        .nr = SYS_clock_gettime32,
-        .name = "clock_gettime32",
+        .nr = SYS_clock_gettime,
+        .name = "clock_gettime",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
+        .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_clock_nanosleep
@@ -433,17 +437,17 @@ syscall_t syscalls[] = {
         .nr = SYS_clock_nanosleep,
         .name = "clock_nanosleep",
         .n_params = 4,
-        .params = {CLOCKID_T, INT, STRUCT___KERNEL_TIMESPEC_PTR,
-            STRUCT___KERNEL_TIMESPEC_PTR}
-    },
-#endif
-#ifdef SYS_clock_nanosleep_time32
-    {
-        .nr = SYS_clock_nanosleep_time32,
-        .name = "clock_nanosleep_time32",
-        .n_params = 4,
         .params = {CLOCKID_T, INT, STRUCT_OLD_TIMESPEC32_PTR,
             STRUCT_OLD_TIMESPEC32_PTR}
+    },
+#endif
+#ifdef SYS_clock_nanosleep_time64
+    {
+        .nr = SYS_clock_nanosleep_time64,
+        .name = "clock_nanosleep",
+        .n_params = 4,
+        .params = {CLOCKID_T, INT, STRUCT___KERNEL_TIMESPEC_PTR,
+            STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_clock_settime
@@ -451,15 +455,15 @@ syscall_t syscalls[] = {
         .nr = SYS_clock_settime,
         .name = "clock_settime",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
+        .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_clock_settime32
+#ifdef SYS_clock_settime64
     {
-        .nr = SYS_clock_settime32,
-        .name = "clock_settime32",
+        .nr = SYS_clock_settime64,
+        .name = "clock_settime",
         .n_params = 2,
-        .params = {CLOCKID_T, STRUCT_OLD_TIMESPEC32_PTR}
+        .params = {CLOCKID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_clone
@@ -760,15 +764,15 @@ syscall_t syscalls[] = {
         .nr = SYS_fchown,
         .name = "fchown",
         .n_params = 3,
-        .params = {UNSIGNED_INT, UID_T, GID_T}
+        .params = {UNSIGNED_INT, OLD_UID_T, OLD_GID_T}
     },
 #endif
-#ifdef SYS_fchown16
+#ifdef SYS_fchown32
     {
-        .nr = SYS_fchown16,
-        .name = "fchown16",
+        .nr = SYS_fchown32,
+        .name = "fchown32",
         .n_params = 3,
-        .params = {UNSIGNED_INT, OLD_UID_T, OLD_GID_T}
+        .params = {UNSIGNED_INT, UID_T, GID_T}
     },
 #endif
 #ifdef SYS_fchownat
@@ -976,16 +980,16 @@ syscall_t syscalls[] = {
         .nr = SYS_futex,
         .name = "futex",
         .n_params = 6,
-        .params = {U32_PTR, INT, U32, STRUCT___KERNEL_TIMESPEC_PTR, U32_PTR,
-            U32}
+        .params = {U32_PTR, INT, U32, STRUCT_OLD_TIMESPEC32_PTR, U32_PTR, U32}
     },
 #endif
-#ifdef SYS_futex_time32
+#ifdef SYS_futex_time64
     {
-        .nr = SYS_futex_time32,
-        .name = "futex_time32",
+        .nr = SYS_futex_time64,
+        .name = "futex",
         .n_params = 6,
-        .params = {U32_PTR, INT, U32, STRUCT_OLD_TIMESPEC32_PTR, U32_PTR, U32}
+        .params = {U32_PTR, INT, U32, STRUCT___KERNEL_TIMESPEC_PTR, U32_PTR,
+            U32}
     },
 #endif
 #ifdef SYS_futimesat
@@ -993,15 +997,11 @@ syscall_t syscalls[] = {
         .nr = SYS_futimesat,
         .name = "futimesat",
         .n_params = 3,
-        .params = {INT, CHAR_PTR, STRUCT___KERNEL_OLD_TIMEVAL_PTR}
-    },
-#endif
-#ifdef SYS_futimesat_time32
-    {
-        .nr = SYS_futimesat_time32,
-        .name = "futimesat_time32",
-        .n_params = 3,
+#ifdef __32BIT__
         .params = {UNSIGNED_INT, CHAR_PTR, STRUCT_OLD_TIMEVAL32_PTR}
+#else
+        .params = {INT, CHAR_PTR, STRUCT___KERNEL_OLD_TIMEVAL_PTR}
+#endif
     },
 #endif
 #ifdef SYS_getcpu
@@ -1060,10 +1060,10 @@ syscall_t syscalls[] = {
         .params = {}
     },
 #endif
-#ifdef SYS_getegid16
+#ifdef SYS_getegid32
     {
-        .nr = SYS_getegid16,
-        .name = "getegid16",
+        .nr = SYS_getegid32,
+        .name = "getegid32",
         .n_params = 0,
         .params = {}
     },
@@ -1076,10 +1076,10 @@ syscall_t syscalls[] = {
         .params = {}
     },
 #endif
-#ifdef SYS_geteuid16
+#ifdef SYS_geteuid32
     {
-        .nr = SYS_geteuid16,
-        .name = "geteuid16",
+        .nr = SYS_geteuid32,
+        .name = "geteuid32",
         .n_params = 0,
         .params = {}
     },
@@ -1092,10 +1092,10 @@ syscall_t syscalls[] = {
         .params = {}
     },
 #endif
-#ifdef SYS_getgid16
+#ifdef SYS_getgid32
     {
-        .nr = SYS_getgid16,
-        .name = "getgid16",
+        .nr = SYS_getgid32,
+        .name = "getgid32",
         .n_params = 0,
         .params = {}
     },
@@ -1105,15 +1105,15 @@ syscall_t syscalls[] = {
         .nr = SYS_getgroups,
         .name = "getgroups",
         .n_params = 2,
-        .params = {INT, GID_T_PTR}
+        .params = {INT, OLD_GID_T_PTR}
     },
 #endif
-#ifdef SYS_getgroups16
+#ifdef SYS_getgroups32
     {
-        .nr = SYS_getgroups16,
-        .name = "getgroups16",
+        .nr = SYS_getgroups32,
+        .name = "getgroups32",
         .n_params = 2,
-        .params = {INT, OLD_GID_T_PTR}
+        .params = {INT, GID_T_PTR}
     },
 #endif
 #ifdef SYS_gethostname
@@ -1218,15 +1218,15 @@ syscall_t syscalls[] = {
         .nr = SYS_getresgid,
         .name = "getresgid",
         .n_params = 3,
-        .params = {GID_T_PTR, GID_T_PTR, GID_T_PTR}
+        .params = {OLD_GID_T_PTR, OLD_GID_T_PTR, OLD_GID_T_PTR}
     },
 #endif
-#ifdef SYS_getresgid16
+#ifdef SYS_getresgid32
     {
-        .nr = SYS_getresgid16,
-        .name = "getresgid16",
+        .nr = SYS_getresgid32,
+        .name = "getresgid32",
         .n_params = 3,
-        .params = {OLD_GID_T_PTR, OLD_GID_T_PTR, OLD_GID_T_PTR}
+        .params = {GID_T_PTR, GID_T_PTR, GID_T_PTR}
     },
 #endif
 #ifdef SYS_getresuid
@@ -1234,15 +1234,15 @@ syscall_t syscalls[] = {
         .nr = SYS_getresuid,
         .name = "getresuid",
         .n_params = 3,
-        .params = {UID_T_PTR, UID_T_PTR, UID_T_PTR}
+        .params = {OLD_UID_T_PTR, OLD_UID_T_PTR, OLD_UID_T_PTR}
     },
 #endif
-#ifdef SYS_getresuid16
+#ifdef SYS_getresuid32
     {
-        .nr = SYS_getresuid16,
-        .name = "getresuid16",
+        .nr = SYS_getresuid32,
+        .name = "getresuid32",
         .n_params = 3,
-        .params = {OLD_UID_T_PTR, OLD_UID_T_PTR, OLD_UID_T_PTR}
+        .params = {UID_T_PTR, UID_T_PTR, UID_T_PTR}
     },
 #endif
 #ifdef SYS_getrlimit
@@ -1329,10 +1329,10 @@ syscall_t syscalls[] = {
         .params = {}
     },
 #endif
-#ifdef SYS_getuid16
+#ifdef SYS_getuid32
     {
-        .nr = SYS_getuid16,
-        .name = "getuid16",
+        .nr = SYS_getuid32,
+        .name = "getuid32",
         .n_params = 0,
         .params = {}
     },
@@ -1438,17 +1438,13 @@ syscall_t syscalls[] = {
         .nr = SYS_io_getevents,
         .name = "io_getevents",
         .n_params = 5,
-        .params = {AIO_CONTEXT_T, LONG, LONG, STRUCT_IO_EVENT_PTR,
-            STRUCT___KERNEL_TIMESPEC_PTR}
-    },
-#endif
-#ifdef SYS_io_getevents_time32
-    {
-        .nr = SYS_io_getevents_time32,
-        .name = "io_getevents_time32",
-        .n_params = 5,
+#ifdef __32BIT__
         .params = {__U32, __S32, __S32, STRUCT_IO_EVENT_PTR,
             STRUCT_OLD_TIMESPEC32_PTR}
+#else
+        .params = {AIO_CONTEXT_T, LONG, LONG, STRUCT_IO_EVENT_PTR,
+            STRUCT___KERNEL_TIMESPEC_PTR}
+#endif
     },
 #endif
 #ifdef SYS_ioperm
@@ -1465,16 +1461,16 @@ syscall_t syscalls[] = {
         .name = "io_pgetevents",
         .n_params = 6,
         .params = {AIO_CONTEXT_T, LONG, LONG, STRUCT_IO_EVENT_PTR,
-            STRUCT___KERNEL_TIMESPEC_PTR, STRUCT___AIO_SIGSET_PTR}
+            STRUCT_OLD_TIMESPEC32_PTR, STRUCT___AIO_SIGSET_PTR}
     },
 #endif
-#ifdef SYS_io_pgetevents_time32
+#ifdef SYS_io_pgetevents_time64
     {
-        .nr = SYS_io_pgetevents_time32,
-        .name = "io_pgetevents_time32",
+        .nr = SYS_io_pgetevents_time64,
+        .name = "io_pgetevents",
         .n_params = 6,
         .params = {AIO_CONTEXT_T, LONG, LONG, STRUCT_IO_EVENT_PTR,
-            STRUCT_OLD_TIMESPEC32_PTR, STRUCT___AIO_SIGSET_PTR}
+            STRUCT___KERNEL_TIMESPEC_PTR, STRUCT___AIO_SIGSET_PTR}
     },
 #endif
 #ifdef SYS_iopl
@@ -1610,15 +1606,15 @@ syscall_t syscalls[] = {
         .nr = SYS_lchown,
         .name = "lchown",
         .n_params = 3,
-        .params = {CHAR_PTR, UID_T, GID_T}
+        .params = {CHAR_PTR, OLD_UID_T, OLD_GID_T}
     },
 #endif
-#ifdef SYS_lchown16
+#ifdef SYS_lchown32
     {
-        .nr = SYS_lchown16,
-        .name = "lchown16",
+        .nr = SYS_lchown32,
+        .name = "lchown32",
         .n_params = 3,
-        .params = {CHAR_PTR, OLD_UID_T, OLD_GID_T}
+        .params = {CHAR_PTR, UID_T, GID_T}
     },
 #endif
 #ifdef SYS_lgetxattr
@@ -1681,6 +1677,15 @@ syscall_t syscalls[] = {
         .params = {UNSIGNED_INT, UNSIGNED_LONG, UNSIGNED_LONG, LOFF_T_PTR,
             UNSIGNED_INT}
 #endif
+    },
+#endif
+#ifdef SYS__llseek
+    {
+        .nr = SYS__llseek,
+        .name = "_llseek",
+        .n_params = 5,
+        .params = {UNSIGNED_INT, UNSIGNED_LONG, UNSIGNED_LONG, LOFF_T,
+            UNSIGNED_INT}
     },
 #endif
 #ifdef SYS_lremovexattr
@@ -1948,17 +1953,17 @@ syscall_t syscalls[] = {
         .nr = SYS_mq_timedreceive,
         .name = "mq_timedreceive",
         .n_params = 5,
-        .params = {MQD_T, CHAR_PTR, SIZE_T, UNSIGNED_INT_PTR,
-            STRUCT___KERNEL_TIMESPEC_PTR}
-    },
-#endif
-#ifdef SYS_mq_timedreceive_time32
-    {
-        .nr = SYS_mq_timedreceive_time32,
-        .name = "mq_timedreceive_time32",
-        .n_params = 5,
         .params = {MQD_T, CHAR_PTR, UNSIGNED_INT, UNSIGNED_INT_PTR,
             STRUCT_OLD_TIMESPEC32_PTR}
+    },
+#endif
+#ifdef SYS_mq_timedreceive_time64
+    {
+        .nr = SYS_mq_timedreceive_time64,
+        .name = "mq_timedreceive",
+        .n_params = 5,
+        .params = {MQD_T, CHAR_PTR, SIZE_T, UNSIGNED_INT_PTR,
+            STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_mq_timedsend
@@ -1966,17 +1971,17 @@ syscall_t syscalls[] = {
         .nr = SYS_mq_timedsend,
         .name = "mq_timedsend",
         .n_params = 5,
-        .params = {MQD_T, CHAR_PTR, SIZE_T, UNSIGNED_INT,
-            STRUCT___KERNEL_TIMESPEC_PTR}
-    },
-#endif
-#ifdef SYS_mq_timedsend_time32
-    {
-        .nr = SYS_mq_timedsend_time32,
-        .name = "mq_timedsend_time32",
-        .n_params = 5,
         .params = {MQD_T, CHAR_PTR, UNSIGNED_INT, UNSIGNED_INT,
             STRUCT_OLD_TIMESPEC32_PTR}
+    },
+#endif
+#ifdef SYS_mq_timedsend_time64
+    {
+        .nr = SYS_mq_timedsend_time64,
+        .name = "mq_timedsend",
+        .n_params = 5,
+        .params = {MQD_T, CHAR_PTR, SIZE_T, UNSIGNED_INT,
+            STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_mq_unlink
@@ -2073,15 +2078,15 @@ syscall_t syscalls[] = {
         .nr = SYS_nanosleep,
         .name = "nanosleep",
         .n_params = 2,
-        .params = {STRUCT___KERNEL_TIMESPEC_PTR, STRUCT___KERNEL_TIMESPEC_PTR}
+        .params = {STRUCT_OLD_TIMESPEC32_PTR, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_nanosleep_time32
+#ifdef SYS_nanosleep_time64
     {
-        .nr = SYS_nanosleep_time32,
-        .name = "nanosleep_time32",
+        .nr = SYS_nanosleep_time64,
+        .name = "nanosleep",
         .n_params = 2,
-        .params = {STRUCT_OLD_TIMESPEC32_PTR, STRUCT_OLD_TIMESPEC32_PTR}
+        .params = {STRUCT___KERNEL_TIMESPEC_PTR, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_fstat
@@ -2138,14 +2143,6 @@ syscall_t syscalls[] = {
         .name = "ni_syscall",
         .n_params = 0,
         .params = {}
-    },
-#endif
-#ifdef SYS_old_adjtimex
-    {
-        .nr = SYS_old_adjtimex,
-        .name = "old_adjtimex",
-        .n_params = 1,
-        .params = {STRUCT_TIMEX32_PTR}
     },
 #endif
 #ifdef SYS_readdir
@@ -2581,17 +2578,17 @@ syscall_t syscalls[] = {
         .nr = SYS_ppoll,
         .name = "ppoll",
         .n_params = 5,
-        .params = {STRUCT_POLLFD_PTR, UNSIGNED_INT,
-            STRUCT___KERNEL_TIMESPEC_PTR, SIGSET_T_PTR, SIZE_T}
-    },
-#endif
-#ifdef SYS_ppoll_time32
-    {
-        .nr = SYS_ppoll_time32,
-        .name = "ppoll_time32",
-        .n_params = 5,
         .params = {STRUCT_POLLFD_PTR, UNSIGNED_INT, STRUCT_OLD_TIMESPEC32_PTR,
             SIGSET_T_PTR, SIZE_T}
+    },
+#endif
+#ifdef SYS_ppoll_time64
+    {
+        .nr = SYS_ppoll_time64,
+        .name = "ppoll",
+        .n_params = 5,
+        .params = {STRUCT_POLLFD_PTR, UNSIGNED_INT,
+            STRUCT___KERNEL_TIMESPEC_PTR, SIGSET_T_PTR, SIZE_T}
     },
 #endif
 #ifdef SYS_prctl
@@ -2679,16 +2676,16 @@ syscall_t syscalls[] = {
         .name = "pselect6",
         .n_params = 6,
         .params = {INT, FD_SET_PTR, FD_SET_PTR, FD_SET_PTR,
-            STRUCT___KERNEL_TIMESPEC_PTR, VOID_PTR}
+            STRUCT_OLD_TIMESPEC32_PTR, VOID_PTR}
     },
 #endif
-#ifdef SYS_pselect6_time32
+#ifdef SYS_pselect6_time64
     {
-        .nr = SYS_pselect6_time32,
-        .name = "pselect6_time32",
+        .nr = SYS_pselect6_time64,
+        .name = "pselect6",
         .n_params = 6,
         .params = {INT, FD_SET_PTR, FD_SET_PTR, FD_SET_PTR,
-            STRUCT_OLD_TIMESPEC32_PTR, VOID_PTR}
+            STRUCT___KERNEL_TIMESPEC_PTR, VOID_PTR}
     },
 #endif
 #ifdef SYS_ptrace
@@ -2817,16 +2814,16 @@ syscall_t syscalls[] = {
         .name = "recvmmsg",
         .n_params = 5,
         .params = {INT, STRUCT_MMSGHDR_PTR, UNSIGNED_INT, UNSIGNED_INT,
-            STRUCT___KERNEL_TIMESPEC_PTR}
+            STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_recvmmsg_time32
+#ifdef SYS_recvmmsg_time64
     {
-        .nr = SYS_recvmmsg_time32,
-        .name = "recvmmsg_time32",
+        .nr = SYS_recvmmsg_time64,
+        .name = "recvmmsg",
         .n_params = 5,
         .params = {INT, STRUCT_MMSGHDR_PTR, UNSIGNED_INT, UNSIGNED_INT,
-            STRUCT_OLD_TIMESPEC32_PTR}
+            STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_recvmsg
@@ -2979,16 +2976,16 @@ syscall_t syscalls[] = {
         .nr = SYS_rt_sigtimedwait,
         .name = "rt_sigtimedwait",
         .n_params = 4,
-        .params = {SIGSET_T_PTR, SIGINFO_T_PTR, STRUCT___KERNEL_TIMESPEC_PTR,
+        .params = {SIGSET_T_PTR, SIGINFO_T_PTR, STRUCT_OLD_TIMESPEC32_PTR,
             SIZE_T}
     },
 #endif
-#ifdef SYS_rt_sigtimedwait_time32
+#ifdef SYS_rt_sigtimedwait_time64
     {
-        .nr = SYS_rt_sigtimedwait_time32,
-        .name = "rt_sigtimedwait_time32",
+        .nr = SYS_rt_sigtimedwait_time64,
+        .name = "rt_sigtimedwait",
         .n_params = 4,
-        .params = {SIGSET_T_PTR, SIGINFO_T_PTR, STRUCT_OLD_TIMESPEC32_PTR,
+        .params = {SIGSET_T_PTR, SIGINFO_T_PTR, STRUCT___KERNEL_TIMESPEC_PTR,
             SIZE_T}
     },
 #endif
@@ -3093,15 +3090,15 @@ syscall_t syscalls[] = {
         .nr = SYS_sched_rr_get_interval,
         .name = "sched_rr_get_interval",
         .n_params = 2,
-        .params = {PID_T, STRUCT___KERNEL_TIMESPEC_PTR}
+        .params = {PID_T, STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_sched_rr_get_interval_time32
+#ifdef SYS_sched_rr_get_interval_time64
     {
-        .nr = SYS_sched_rr_get_interval_time32,
-        .name = "sched_rr_get_interval_time32",
+        .nr = SYS_sched_rr_get_interval_time64,
+        .name = "sched_rr_get_interval",
         .n_params = 2,
-        .params = {PID_T, STRUCT_OLD_TIMESPEC32_PTR}
+        .params = {PID_T, STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_sched_setaffinity
@@ -3191,16 +3188,16 @@ syscall_t syscalls[] = {
         .name = "semtimedop",
         .n_params = 4,
         .params = {INT, STRUCT_SEMBUF_PTR, UNSIGNED_INT,
-            STRUCT___KERNEL_TIMESPEC_PTR}
+            STRUCT_OLD_TIMESPEC32_PTR}
     },
 #endif
-#ifdef SYS_semtimedop_time32
+#ifdef SYS_semtimedop_time64
     {
-        .nr = SYS_semtimedop_time32,
-        .name = "semtimedop_time32",
+        .nr = SYS_semtimedop_time64,
+        .name = "semtimedop",
         .n_params = 4,
         .params = {INT, STRUCT_SEMBUF_PTR, UNSIGNED_INT,
-            STRUCT_OLD_TIMESPEC32_PTR}
+            STRUCT___KERNEL_TIMESPEC_PTR}
     },
 #endif
 #ifdef SYS_send
@@ -3265,15 +3262,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setfsgid,
         .name = "setfsgid",
         .n_params = 1,
-        .params = {GID_T}
+        .params = {OLD_GID_T}
     },
 #endif
-#ifdef SYS_setfsgid16
+#ifdef SYS_setfsgid32
     {
-        .nr = SYS_setfsgid16,
-        .name = "setfsgid16",
+        .nr = SYS_setfsgid32,
+        .name = "setfsgid32",
         .n_params = 1,
-        .params = {OLD_GID_T}
+        .params = {GID_T}
     },
 #endif
 #ifdef SYS_setfsuid
@@ -3281,15 +3278,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setfsuid,
         .name = "setfsuid",
         .n_params = 1,
-        .params = {UID_T}
+        .params = {OLD_UID_T}
     },
 #endif
-#ifdef SYS_setfsuid16
+#ifdef SYS_setfsuid32
     {
-        .nr = SYS_setfsuid16,
-        .name = "setfsuid16",
+        .nr = SYS_setfsuid32,
+        .name = "setfsuid32",
         .n_params = 1,
-        .params = {OLD_UID_T}
+        .params = {UID_T}
     },
 #endif
 #ifdef SYS_setgid
@@ -3297,31 +3294,31 @@ syscall_t syscalls[] = {
         .nr = SYS_setgid,
         .name = "setgid",
         .n_params = 1,
-        .params = {GID_T}
+        .params = {OLD_GID_T}
     },
 #endif
-#ifdef SYS_setgid16
+#ifdef SYS_setgid32
     {
-        .nr = SYS_setgid16,
-        .name = "setgid16",
+        .nr = SYS_setgid32,
+        .name = "setgid32",
         .n_params = 1,
-        .params = {OLD_GID_T}
+        .params = {GID_T}
     },
 #endif
 #ifdef SYS_setgroups
     {
         .nr = SYS_setgroups,
-        .name = "setgroups",
-        .n_params = 2,
-        .params = {INT, GID_T_PTR}
-    },
-#endif
-#ifdef SYS_setgroups16
-    {
-        .nr = SYS_setgroups16,
-        .name = "setgroups16",
+        .name = "setgroups32",
         .n_params = 2,
         .params = {INT, OLD_GID_T_PTR}
+    },
+#endif
+#ifdef SYS_setgroups32
+    {
+        .nr = SYS_setgroups32,
+        .name = "setgroups32",
+        .n_params = 2,
+        .params = {INT, GID_T_PTR}
     },
 #endif
 #ifdef SYS_sethae
@@ -3386,15 +3383,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setregid,
         .name = "setregid",
         .n_params = 2,
-        .params = {GID_T, GID_T}
+        .params = {OLD_GID_T, OLD_GID_T}
     },
 #endif
-#ifdef SYS_setregid16
+#ifdef SYS_setregid32
     {
-        .nr = SYS_setregid16,
-        .name = "setregid16",
+        .nr = SYS_setregid32,
+        .name = "setregid32",
         .n_params = 2,
-        .params = {OLD_GID_T, OLD_GID_T}
+        .params = {GID_T, GID_T}
     },
 #endif
 #ifdef SYS_setresgid
@@ -3402,15 +3399,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setresgid,
         .name = "setresgid",
         .n_params = 3,
-        .params = {GID_T, GID_T, GID_T}
+        .params = {OLD_GID_T, OLD_GID_T, OLD_GID_T}
     },
 #endif
-#ifdef SYS_setresgid16
+#ifdef SYS_setresgid32
     {
-        .nr = SYS_setresgid16,
-        .name = "setresgid16",
+        .nr = SYS_setresgid32,
+        .name = "setresgid32",
         .n_params = 3,
-        .params = {OLD_GID_T, OLD_GID_T, OLD_GID_T}
+        .params = {GID_T, GID_T, GID_T}
     },
 #endif
 #ifdef SYS_setresuid
@@ -3418,15 +3415,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setresuid,
         .name = "setresuid",
         .n_params = 3,
-        .params = {UID_T, UID_T, UID_T}
+        .params = {OLD_UID_T, OLD_UID_T, OLD_UID_T}
     },
 #endif
-#ifdef SYS_setresuid16
+#ifdef SYS_setresuid32
     {
-        .nr = SYS_setresuid16,
-        .name = "setresuid16",
+        .nr = SYS_setresuid32,
+        .name = "setresuid32",
         .n_params = 3,
-        .params = {OLD_UID_T, OLD_UID_T, OLD_UID_T}
+        .params = {UID_T, UID_T, UID_T}
     },
 #endif
 #ifdef SYS_setreuid
@@ -3434,15 +3431,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setreuid,
         .name = "setreuid",
         .n_params = 2,
-        .params = {UID_T, UID_T}
+        .params = {OLD_UID_T, OLD_UID_T}
     },
 #endif
-#ifdef SYS_setreuid16
+#ifdef SYS_setreuid32
     {
-        .nr = SYS_setreuid16,
-        .name = "setreuid16",
+        .nr = SYS_setreuid32,
+        .name = "setreuid32",
         .n_params = 2,
-        .params = {OLD_UID_T, OLD_UID_T}
+        .params = {UID_T, UID_T}
     },
 #endif
 #ifdef SYS_setrlimit
@@ -3506,15 +3503,15 @@ syscall_t syscalls[] = {
         .nr = SYS_setuid,
         .name = "setuid",
         .n_params = 1,
-        .params = {UID_T}
+        .params = {OLD_UID_T}
     },
 #endif
-#ifdef SYS_setuid16
+#ifdef SYS_setuid32
     {
-        .nr = SYS_setuid16,
-        .name = "setuid16",
+        .nr = SYS_setuid32,
+        .name = "setuid32",
         .n_params = 1,
-        .params = {OLD_UID_T}
+        .params = {UID_T}
     },
 #endif
 #ifdef SYS_setxattr
@@ -3751,15 +3748,11 @@ syscall_t syscalls[] = {
         .nr = SYS_stime,
         .name = "stime",
         .n_params = 1,
-        .params = {__KERNEL_OLD_TIME_T_PTR}
-    },
-#endif
-#ifdef SYS_stime32
-    {
-        .nr = SYS_stime32,
-        .name = "stime32",
-        .n_params = 1,
+#ifdef __32BIT__
         .params = {OLD_TIME32_T_PTR}
+#else
+        .params = {__KERNEL_OLD_TIME_T_PTR}
+#endif
     },
 #endif
 #ifdef SYS_subpage_prot
@@ -3909,15 +3902,11 @@ syscall_t syscalls[] = {
         .nr = SYS_time,
         .name = "time",
         .n_params = 1,
-        .params = {__KERNEL_OLD_TIME_T_PTR}
-    },
-#endif
-#ifdef SYS_time32
-    {
-        .nr = SYS_time32,
-        .name = "time32",
-        .n_params = 1,
+#ifdef __32BIT__
         .params = {OLD_TIME32_T_PTR}
+#else
+        .params = {__KERNEL_OLD_TIME_T_PTR}
+#endif
     },
 #endif
 #ifdef SYS_timer_create
@@ -3949,15 +3938,15 @@ syscall_t syscalls[] = {
         .nr = SYS_timerfd_gettime,
         .name = "timerfd_gettime",
         .n_params = 2,
-        .params = {INT, STRUCT___KERNEL_ITIMERSPEC_PTR}
+        .params = {INT, STRUCT_OLD_ITIMERSPEC32_PTR}
     },
 #endif
-#ifdef SYS_timerfd_gettime32
+#ifdef SYS_timerfd_gettime64
     {
-        .nr = SYS_timerfd_gettime32,
-        .name = "timerfd_gettime32",
+        .nr = SYS_timerfd_gettime64,
+        .name = "timerfd_gettime",
         .n_params = 2,
-        .params = {INT, STRUCT_OLD_ITIMERSPEC32_PTR}
+        .params = {INT, STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
 #endif
 #ifdef SYS_timerfd_settime
@@ -3965,17 +3954,17 @@ syscall_t syscalls[] = {
         .nr = SYS_timerfd_settime,
         .name = "timerfd_settime",
         .n_params = 4,
-        .params = {INT, INT, STRUCT___KERNEL_ITIMERSPEC_PTR,
-            STRUCT___KERNEL_ITIMERSPEC_PTR}
-    },
-#endif
-#ifdef SYS_timerfd_settime32
-    {
-        .nr = SYS_timerfd_settime32,
-        .name = "timerfd_settime32",
-        .n_params = 4,
         .params = {INT, INT, STRUCT_OLD_ITIMERSPEC32_PTR,
             STRUCT_OLD_ITIMERSPEC32_PTR}
+    },
+#endif
+#ifdef SYS_timerfd_settime64
+    {
+        .nr = SYS_timerfd_settime64,
+        .name = "timerfd_settime",
+        .n_params = 4,
+        .params = {INT, INT, STRUCT___KERNEL_ITIMERSPEC_PTR,
+            STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
 #endif
 #ifdef SYS_timer_getoverrun
@@ -3991,15 +3980,15 @@ syscall_t syscalls[] = {
         .nr = SYS_timer_gettime,
         .name = "timer_gettime",
         .n_params = 2,
-        .params = {TIMER_T, STRUCT___KERNEL_ITIMERSPEC_PTR}
+        .params = {TIMER_T, STRUCT_OLD_ITIMERSPEC32_PTR}
     },
 #endif
-#ifdef SYS_timer_gettime32
+#ifdef SYS_timer_gettime64
     {
-        .nr = SYS_timer_gettime32,
-        .name = "timer_gettime32",
+        .nr = SYS_timer_gettime64,
+        .name = "timer_gettime",
         .n_params = 2,
-        .params = {TIMER_T, STRUCT_OLD_ITIMERSPEC32_PTR}
+        .params = {TIMER_T, STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
 #endif
 #ifdef SYS_timer_settime
@@ -4007,17 +3996,17 @@ syscall_t syscalls[] = {
         .nr = SYS_timer_settime,
         .name = "timer_settime",
         .n_params = 4,
-        .params = {TIMER_T, INT, STRUCT___KERNEL_ITIMERSPEC_PTR,
-            STRUCT___KERNEL_ITIMERSPEC_PTR}
-    },
-#endif
-#ifdef SYS_timer_settime32
-    {
-        .nr = SYS_timer_settime32,
-        .name = "timer_settime32",
-        .n_params = 4,
         .params = {TIMER_T, INT, STRUCT_OLD_ITIMERSPEC32_PTR,
             STRUCT_OLD_ITIMERSPEC32_PTR}
+    },
+#endif
+#ifdef SYS_timer_settime64
+    {
+        .nr = SYS_timer_settime64,
+        .name = "timer_settime",
+        .n_params = 4,
+        .params = {TIMER_T, INT, STRUCT___KERNEL_ITIMERSPEC_PTR,
+            STRUCT___KERNEL_ITIMERSPEC_PTR}
     },
 #endif
 #ifdef SYS_times
@@ -4137,15 +4126,11 @@ syscall_t syscalls[] = {
         .nr = SYS_utime,
         .name = "utime",
         .n_params = 2,
-        .params = {CHAR_PTR, STRUCT_UTIMBUF_PTR}
-    },
-#endif
-#ifdef SYS_utime32
-    {
-        .nr = SYS_utime32,
-        .name = "utime32",
-        .n_params = 2,
+#ifdef __32BIT__
         .params = {CHAR_PTR, STRUCT_OLD_UTIMBUF32_PTR}
+#else
+        .params = {CHAR_PTR, STRUCT_UTIMBUF_PTR}
+#endif
     },
 #endif
 #ifdef SYS_utimensat
@@ -4153,15 +4138,15 @@ syscall_t syscalls[] = {
         .nr = SYS_utimensat,
         .name = "utimensat",
         .n_params = 4,
-        .params = {INT, CHAR_PTR, STRUCT___KERNEL_TIMESPEC_PTR, INT}
+        .params = {UNSIGNED_INT, CHAR_PTR, STRUCT_OLD_TIMESPEC32_PTR, INT}
     },
 #endif
-#ifdef SYS_utimensat_time32
+#ifdef SYS_utimensat_time64
     {
-        .nr = SYS_utimensat_time32,
-        .name = "utimensat_time32",
+        .nr = SYS_utimensat_time64,
+        .name = "utimensat",
         .n_params = 4,
-        .params = {UNSIGNED_INT, CHAR_PTR, STRUCT_OLD_TIMESPEC32_PTR, INT}
+        .params = {INT, CHAR_PTR, STRUCT___KERNEL_TIMESPEC_PTR, INT}
     },
 #endif
 #ifdef SYS_utimes
@@ -4169,15 +4154,11 @@ syscall_t syscalls[] = {
         .nr = SYS_utimes,
         .name = "utimes",
         .n_params = 2,
-        .params = {CHAR_PTR, STRUCT___KERNEL_OLD_TIMEVAL_PTR}
-    },
-#endif
-#ifdef SYS_utimes_time32
-    {
-        .nr = SYS_utimes_time32,
-        .name = "utimes_time32",
-        .n_params = 2,
+#ifdef __32BIT__
         .params = {CHAR_PTR, STRUCT_OLD_TIMEVAL32_PTR}
+#else
+        .params = {CHAR_PTR, STRUCT___KERNEL_OLD_TIMEVAL_PTR}
+#endif
     },
 #endif
 #ifdef SYS_utrap_install
