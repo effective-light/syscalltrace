@@ -1,6 +1,6 @@
 FLAGS = -Wextra -O2 -std=gnu99 -g
 
-ctrace: ctrace.o
+ctrace: ctrace.h ctrace.o
 	gcc ${FLAGS} -o $@ $^
 
 %.o: %.c
