@@ -1,16 +1,17 @@
 #ifndef _CTRACE_H_
 #define _CTRACE_H_
 
+#include <stdint.h>
+#include <unistd.h>
+
+#include <sys/syscall.h>
+
 #if INTPTR_MAX == INT32_MAX
 #define __32BIT__
 #elif INTPTR_MAX != INT64_MAX
 #error Unknown pointer size or missing size macros!
 #endif
 
-#include <stdint.h>
-
-#include <unistd.h>
-#include <sys/syscall.h>
 
 typedef enum param_types {
     AIO_CONTEXT_T,
