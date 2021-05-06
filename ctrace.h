@@ -4218,7 +4218,7 @@ syscall_t syscalls[] = {
 // unimplemented start
 #ifdef SYS_osf_adjtime
     {
-        .nr = osf_adjtime,
+        .nr = SYS_osf_adjtime,
         .name = "osf_adjtime",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4226,7 +4226,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_afs_syscall
     {
-        .nr = osf_afs_syscall,
+        .nr = SYS_osf_afs_syscall,
         .name = "osf_afs_syscall",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4234,7 +4234,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_alt_plock
     {
-        .nr = osf_alt_plock,
+        .nr = SYS_osf_alt_plock,
         .name = "osf_alt_plock",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4242,7 +4242,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_alt_setsid
     {
-        .nr = osf_alt_setsid,
+        .nr = SYS_osf_alt_setsid,
         .name = "osf_alt_setsid",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4250,7 +4250,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_alt_sigpending
     {
-        .nr = osf_alt_sigpending,
+        .nr = SYS_osf_alt_sigpending,
         .name = "osf_alt_sigpending",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4258,7 +4258,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_asynch_daemon
     {
-        .nr = osf_asynch_daemon,
+        .nr = SYS_osf_asynch_daemon,
         .name = "osf_asynch_daemon",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4266,7 +4266,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_audcntl
     {
-        .nr = osf_audcntl,
+        .nr = SYS_osf_audcntl,
         .name = "osf_audcntl",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4274,7 +4274,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_audgen
     {
-        .nr = osf_audgen,
+        .nr = SYS_osf_audgen,
         .name = "osf_audgen",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4282,7 +4282,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_chflags
     {
-        .nr = osf_chflags,
+        .nr = SYS_osf_chflags,
         .name = "osf_chflags",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4290,7 +4290,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_execve
     {
-        .nr = osf_execve,
+        .nr = SYS_osf_execve,
         .name = "osf_execve",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4298,7 +4298,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_exportfs
     {
-        .nr = osf_exportfs,
+        .nr = SYS_osf_exportfs,
         .name = "osf_exportfs",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4306,7 +4306,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_fchflags
     {
-        .nr = osf_fchflags,
+        .nr = SYS_osf_fchflags,
         .name = "osf_fchflags",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4314,7 +4314,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_fdatasync
     {
-        .nr = osf_fdatasync,
+        .nr = SYS_osf_fdatasync,
         .name = "osf_fdatasync",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4322,7 +4322,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_fpathconf
     {
-        .nr = osf_fpathconf,
+        .nr = SYS_osf_fpathconf,
         .name = "osf_fpathconf",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4330,7 +4330,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_fuser
     {
-        .nr = osf_fuser,
+        .nr = SYS_osf_fuser,
         .name = "osf_fuser",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4338,7 +4338,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_getaddressconf
     {
-        .nr = osf_getaddressconf,
+        .nr = SYS_osf_getaddressconf,
         .name = "osf_getaddressconf",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4346,7 +4346,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_getfh
     {
-        .nr = osf_getfh,
+        .nr = SYS_osf_getfh,
         .name = "osf_getfh",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4354,7 +4354,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_getfsstat
     {
-        .nr = osf_getfsstat,
+        .nr = SYS_osf_getfsstat,
         .name = "osf_getfsstat",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4362,7 +4362,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_gethostid
     {
-        .nr = osf_gethostid,
+        .nr = SYS_osf_gethostid,
         .name = "osf_gethostid",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4370,7 +4370,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_getlogin
     {
-        .nr = osf_getlogin,
+        .nr = SYS_osf_getlogin,
         .name = "osf_getlogin",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4378,7 +4378,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_getmnt
     {
-        .nr = osf_getmnt,
+        .nr = SYS_osf_getmnt,
         .name = "osf_getmnt",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4386,7 +4386,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_kloadcall
     {
-        .nr = osf_kloadcall,
+        .nr = SYS_osf_kloadcall,
         .name = "osf_kloadcall",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4394,7 +4394,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_kmodcall
     {
-        .nr = osf_kmodcall,
+        .nr = SYS_osf_kmodcall,
         .name = "osf_kmodcall",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4402,7 +4402,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_memcntl
     {
-        .nr = osf_memcntl,
+        .nr = SYS_osf_memcntl,
         .name = "osf_memcntl",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4410,7 +4410,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_mincore
     {
-        .nr = osf_mincore,
+        .nr = SYS_osf_mincore,
         .name = "osf_mincore",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4418,7 +4418,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_mremap
     {
-        .nr = osf_mremap,
+        .nr = SYS_osf_mremap,
         .name = "osf_mremap",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4426,7 +4426,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_msfs_syscall
     {
-        .nr = osf_msfs_syscall,
+        .nr = SYS_osf_msfs_syscall,
         .name = "osf_msfs_syscall",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4434,7 +4434,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_msleep
     {
-        .nr = osf_msleep,
+        .nr = SYS_osf_msleep,
         .name = "osf_msleep",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4442,7 +4442,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_mvalid
     {
-        .nr = osf_mvalid,
+        .nr = SYS_osf_mvalid,
         .name = "osf_mvalid",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4450,7 +4450,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_mwakeup
     {
-        .nr = osf_mwakeup,
+        .nr = SYS_osf_mwakeup,
         .name = "osf_mwakeup",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4458,7 +4458,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_naccept
     {
-        .nr = osf_naccept,
+        .nr = SYS_osf_naccept,
         .name = "osf_naccept",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4466,7 +4466,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_nfssvc
     {
-        .nr = osf_nfssvc,
+        .nr = SYS_osf_nfssvc,
         .name = "osf_nfssvc",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4474,7 +4474,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_ngetpeername
     {
-        .nr = osf_ngetpeername,
+        .nr = SYS_osf_ngetpeername,
         .name = "osf_ngetpeername",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4482,7 +4482,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_ngetsockname
     {
-        .nr = osf_ngetsockname,
+        .nr = SYS_osf_ngetsockname,
         .name = "osf_ngetsockname",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4490,7 +4490,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_nrecvfrom
     {
-        .nr = osf_nrecvfrom,
+        .nr = SYS_osf_nrecvfrom,
         .name = "osf_nrecvfrom",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4498,7 +4498,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_nrecvmsg
     {
-        .nr = osf_nrecvmsg,
+        .nr = SYS_osf_nrecvmsg,
         .name = "osf_nrecvmsg",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4506,7 +4506,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_nsendmsg
     {
-        .nr = osf_nsendmsg,
+        .nr = SYS_osf_nsendmsg,
         .name = "osf_nsendmsg",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4514,7 +4514,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_ntp_adjtime
     {
-        .nr = osf_ntp_adjtime,
+        .nr = SYS_osf_ntp_adjtime,
         .name = "osf_ntp_adjtime",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4522,7 +4522,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_ntp_gettime
     {
-        .nr = osf_ntp_gettime,
+        .nr = SYS_osf_ntp_gettime,
         .name = "osf_ntp_gettime",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4530,7 +4530,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_creat
     {
-        .nr = osf_old_creat,
+        .nr = SYS_osf_old_creat,
         .name = "osf_old_creat",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4538,7 +4538,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_fstat
     {
-        .nr = osf_old_fstat,
+        .nr = SYS_osf_old_fstat,
         .name = "osf_old_fstat",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4546,7 +4546,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_getpgrp
     {
-        .nr = osf_old_getpgrp,
+        .nr = SYS_osf_old_getpgrp,
         .name = "osf_old_getpgrp",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4554,7 +4554,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_killpg
     {
-        .nr = osf_old_killpg,
+        .nr = SYS_osf_old_killpg,
         .name = "osf_old_killpg",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4562,7 +4562,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_lstat
     {
-        .nr = osf_old_lstat,
+        .nr = SYS_osf_old_lstat,
         .name = "osf_old_lstat",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4570,7 +4570,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_open
     {
-        .nr = osf_old_open,
+        .nr = SYS_osf_old_open,
         .name = "osf_old_open",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4578,7 +4578,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_oldquota
     {
-        .nr = osf_oldquota,
+        .nr = SYS_osf_oldquota,
         .name = "osf_oldquota",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4586,7 +4586,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_sigaction
     {
-        .nr = osf_old_sigaction,
+        .nr = SYS_osf_old_sigaction,
         .name = "osf_old_sigaction",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4594,7 +4594,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_sigblock
     {
-        .nr = osf_old_sigblock,
+        .nr = SYS_osf_old_sigblock,
         .name = "osf_old_sigblock",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4602,7 +4602,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_sigreturn
     {
-        .nr = osf_old_sigreturn,
+        .nr = SYS_osf_old_sigreturn,
         .name = "osf_old_sigreturn",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4610,7 +4610,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_sigsetmask
     {
-        .nr = osf_old_sigsetmask,
+        .nr = SYS_osf_old_sigsetmask,
         .name = "osf_old_sigsetmask",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4618,7 +4618,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_sigvec
     {
-        .nr = osf_old_sigvec,
+        .nr = SYS_osf_old_sigvec,
         .name = "osf_old_sigvec",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4626,7 +4626,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_stat
     {
-        .nr = osf_old_stat,
+        .nr = SYS_osf_old_stat,
         .name = "osf_old_stat",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4634,7 +4634,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_vadvise
     {
-        .nr = osf_old_vadvise,
+        .nr = SYS_osf_old_vadvise,
         .name = "osf_old_vadvise",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4642,7 +4642,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_vtrace
     {
-        .nr = osf_old_vtrace,
+        .nr = SYS_osf_old_vtrace,
         .name = "osf_old_vtrace",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4650,7 +4650,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_old_wait
     {
-        .nr = osf_old_wait,
+        .nr = SYS_osf_old_wait,
         .name = "osf_old_wait",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4658,7 +4658,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_pathconf
     {
-        .nr = osf_pathconf,
+        .nr = SYS_osf_pathconf,
         .name = "osf_pathconf",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4666,7 +4666,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_pid_block
     {
-        .nr = osf_pid_block,
+        .nr = SYS_osf_pid_block,
         .name = "osf_pid_block",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4674,7 +4674,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_pid_unblock
     {
-        .nr = osf_pid_unblock,
+        .nr = SYS_osf_pid_unblock,
         .name = "osf_pid_unblock",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4682,7 +4682,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_plock
     {
-        .nr = osf_plock,
+        .nr = SYS_osf_plock,
         .name = "osf_plock",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4690,7 +4690,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_priocntlset
     {
-        .nr = osf_priocntlset,
+        .nr = SYS_osf_priocntlset,
         .name = "osf_priocntlset",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4698,7 +4698,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_profil
     {
-        .nr = osf_profil,
+        .nr = SYS_osf_profil,
         .name = "osf_profil",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4706,7 +4706,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_reboot
     {
-        .nr = osf_reboot,
+        .nr = SYS_osf_reboot,
         .name = "osf_reboot",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4714,7 +4714,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_revoke
     {
-        .nr = osf_revoke,
+        .nr = SYS_osf_revoke,
         .name = "osf_revoke",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4722,7 +4722,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_sbrk
     {
-        .nr = osf_sbrk,
+        .nr = SYS_osf_sbrk,
         .name = "osf_sbrk",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4730,7 +4730,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_security
     {
-        .nr = osf_security,
+        .nr = SYS_osf_security,
         .name = "osf_security",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4738,7 +4738,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_sethostid
     {
-        .nr = osf_sethostid,
+        .nr = SYS_osf_sethostid,
         .name = "osf_sethostid",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4746,7 +4746,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_setlogin
     {
-        .nr = osf_setlogin,
+        .nr = SYS_osf_setlogin,
         .name = "osf_setlogin",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4754,7 +4754,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_set_speculative
     {
-        .nr = osf_set_speculative,
+        .nr = SYS_osf_set_speculative,
         .name = "osf_set_speculative",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4762,7 +4762,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_signal
     {
-        .nr = osf_signal,
+        .nr = SYS_osf_signal,
         .name = "osf_signal",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4770,7 +4770,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_sigsendset
     {
-        .nr = osf_sigsendset,
+        .nr = SYS_osf_sigsendset,
         .name = "osf_sigsendset",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4778,7 +4778,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_sigwaitprim
     {
-        .nr = osf_sigwaitprim,
+        .nr = SYS_osf_sigwaitprim,
         .name = "osf_sigwaitprim",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4786,7 +4786,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_sstk
     {
-        .nr = osf_sstk,
+        .nr = SYS_osf_sstk,
         .name = "osf_sstk",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4794,7 +4794,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_subsys_info
     {
-        .nr = osf_subsys_info,
+        .nr = SYS_osf_subsys_info,
         .name = "osf_subsys_info",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4802,7 +4802,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_swapctl
     {
-        .nr = osf_swapctl,
+        .nr = SYS_osf_swapctl,
         .name = "osf_swapctl",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4810,7 +4810,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_syscall
     {
-        .nr = osf_syscall,
+        .nr = SYS_osf_syscall,
         .name = "osf_syscall",
         .n_params = 6,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4818,7 +4818,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_table
     {
-        .nr = osf_table,
+        .nr = SYS_osf_table,
         .name = "osf_table",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4826,7 +4826,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_uadmin
     {
-        .nr = osf_uadmin,
+        .nr = SYS_osf_uadmin,
         .name = "osf_uadmin",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4834,7 +4834,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_uswitch
     {
-        .nr = osf_uswitch,
+        .nr = SYS_osf_uswitch,
         .name = "osf_uswitch",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4842,7 +4842,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_utc_adjtime
     {
-        .nr = osf_utc_adjtime,
+        .nr = SYS_osf_utc_adjtime,
         .name = "osf_utc_adjtime",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4850,7 +4850,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_utc_gettime
     {
-        .nr = osf_utc_gettime,
+        .nr = SYS_osf_utc_gettime,
         .name = "osf_utc_gettime",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
@@ -4858,7 +4858,7 @@ syscall_t syscalls[] = {
 #endif
 #ifdef SYS_osf_waitid
     {
-        .nr = osf_waitid,
+        .nr = SYS_osf_waitid,
         .name = "osf_waitid",
         .n_params = 5,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
