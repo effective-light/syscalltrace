@@ -4865,6 +4865,9 @@ syscall_t syscalls[] = {
     },
 #endif
 // unimplemented end
+// irregular start
+// TODO: add irregularly defined syscalls
+// irregular end
 #ifdef SYS_write
     {
         .nr = SYS_write,
