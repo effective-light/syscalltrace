@@ -5228,6 +5228,22 @@ syscall_t syscalls[] = {
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
     },
 #endif
+#ifdef SYS_sched_get_affinity
+    {
+        .nr = SYS_sched_get_affinity,
+        .name = "sched_get_affinity",
+        .n_params = 3,
+        .params = {PID_T, UNSIGNED_INT, UNSIGNED_LONG_PTR}
+    },
+#endif
+#ifdef SYS_sched_set_affinity
+    {
+        .nr = SYS_sched_set_affinity,
+        .name = "sched_set_affinity",
+        .n_params = 3,
+        .params = {PID_T, UNSIGNED_INT, UNSIGNED_LONG_PTR}
+    },
+#endif
 #ifdef SYS_security
     {
         .nr = SYS_security,
@@ -5269,14 +5285,6 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_syscall,
         .name = "syscall",
-        .n_params = 5,
-        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
-    },
-#endif
-#ifdef SYS_syscall
-    {
-        .nr = SYS_syscall,
-        .name = "syscall",
         .n_params = 6,
         .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
     },
@@ -5294,7 +5302,7 @@ syscall_t syscalls[] = {
         .nr = SYS_sys_epoll_create,
         .name = "sys_epoll_create",
         .n_params = 1,
-        .params = {VOID_PTR}
+        .params = {INT}
     },
 #endif
 #ifdef SYS_sys_epoll_ctl
@@ -5302,7 +5310,7 @@ syscall_t syscalls[] = {
         .nr = SYS_sys_epoll_ctl,
         .name = "sys_epoll_ctl",
         .n_params = 4,
-        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+        .params = {INT, INT, INT, STRUCT_EPOLL_EVENT_PTR}
     },
 #endif
 #ifdef SYS_sys_epoll_wait
@@ -5310,7 +5318,7 @@ syscall_t syscalls[] = {
         .nr = SYS_sys_epoll_wait,
         .name = "sys_epoll_wait",
         .n_params = 4,
-        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+        .params = {INT, STRUCT_EPOLL_EVENT_PTR, INT, INT}
     },
 #endif
 #ifdef SYS_timerfd
@@ -5339,7 +5347,7 @@ syscall_t syscalls[] = {
         .nr = SYS_ugetrlimit,
         .name = "ugetrlimit",
         .n_params = 2,
-        .params = {VOID_PTR, VOID_PTR}
+        .params = {UNSIGNED_INT, STRUCT_RLIMIT_PTR}
     },
 #endif
 #ifdef SYS_ulimit
