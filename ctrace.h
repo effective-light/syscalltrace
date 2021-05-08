@@ -4034,8 +4034,8 @@ syscall_t syscalls[] = {
     {
         .nr = SYS_umount,
         .name = "umount",
-        .n_params = 2,
-        .params = {CHAR_PTR, INT}
+        .n_params = 1,
+        .params = {CHAR_PTR}
     },
 #endif
 #ifdef SYS_olduname
@@ -4866,7 +4866,532 @@ syscall_t syscalls[] = {
 #endif
 // unimplemented end
 // irregular start
-// TODO: add irregularly defined syscalls
+#ifdef SYS_acl_get
+    {
+        .nr = SYS_acl_get,
+        .name = "acl_get",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_acl_set
+    {
+        .nr = SYS_acl_set,
+        .name = "acl_set",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_afs_syscall
+    {
+        .nr = SYS_afs_syscall,
+        .name = "afs_syscall",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 0,
+        .params = {}
+#else
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_alloc_hugepages
+    {
+        .nr = SYS_alloc_hugepages,
+        .name = "alloc_hugepages",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_arm_fadvise64_64
+    {
+        .nr = SYS_arm_fadvise64_64,
+        .name = "arm_fadvise64_64",
+        .n_params = 4,
+        .params = {INT, INT, LOFF_T, LOFF_T}
+    },
+#endif
+#ifdef SYS_arm_sync_file_range
+    {
+        .nr = SYS_arm_sync_file_range,
+        .name = "arm_sync_file_range",
+        .n_params = 4,
+        .params = {INT, LOFF_T, LOFF_T, UNSIGNED_INT}
+    },
+#endif
+#ifdef SYS_atomic_barrier
+    {
+        .nr = SYS_atomic_barrier,
+        .name = "atomic_barrier",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_atomic_cmpxchg_32
+    {
+        .nr = SYS_atomic_cmpxchg_32,
+        .name = "atomic_cmpxchg_32",
+        .n_params = 6,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_attrctl
+    {
+        .nr = SYS_attrctl,
+        .name = "attrctl",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_break
+    {
+        .nr = SYS_break,
+        .name = "break",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_breakpoint
+    {
+        .nr = SYS_breakpoint,
+        .name = "breakpoint",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_clone2
+    {
+        .nr = SYS_clone2,
+        .name = "clone2",
+        .n_params = 5,
+        .params = {UNSIGNED_LONG, UNSIGNED_LONG, INT_PTR, UNSIGNED_LONG,
+            INT_PTR}
+    },
+#endif
+#ifdef SYS_cmpxchg_badaddr
+    {
+        .nr = SYS_cmpxchg_badaddr,
+        .name = "cmpxchg_badaddr",
+        .n_params = 1,
+        .params = {VOID_PTR}
+    },
+#endif
+#ifdef SYS_create_module
+    {
+        .nr = SYS_create_module,
+        .name = "create_module",
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_dipc
+    {
+        .nr = SYS_dipc,
+        .name = "dipc",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_epoll_ctl_old
+    {
+        .nr = SYS_epoll_ctl_old,
+        .name = "epoll_ctl_old",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_epoll_wait_old
+    {
+        .nr = SYS_epoll_wait_old,
+        .name = "epoll_wait_old",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_execv
+    {
+        .nr = SYS_execv,
+        .name = "execv",
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_exec_with_loader
+    {
+        .nr = SYS_exec_with_loader,
+        .name = "exec_with_loader",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_free_hugepages
+    {
+        .nr = SYS_free_hugepages,
+        .name = "free_hugepages",
+        .n_params = 1,
+        .params = {VOID_PTR}
+    },
+#endif
+#ifdef SYS_ftime
+    {
+        .nr = SYS_ftime,
+        .name = "ftime",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 1,
+        .params = {VOID_PTR}
+#else
+        .n_params = 0,
+        .params = {}
+#endif
+    },
+#endif
+#ifdef SYS_get_kernel_syms
+    {
+        .nr = SYS_get_kernel_syms,
+        .name = "get_kernel_syms",
+        .n_params = 1,
+        .params = {VOID_PTR}
+    },
+#endif
+#ifdef SYS_getpmsg
+    {
+        .nr = SYS_getpmsg,
+        .name = "getpmsg",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_get_tls
+    {
+        .nr = SYS_get_tls,
+        .name = "get_tls",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_getunwind
+    {
+        .nr = SYS_getunwind,
+        .name = "getunwind",
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_gtty
+    {
+        .nr = SYS_gtty,
+        .name = "gtty",
+#ifdef __mips__
+        .n_params = 0,
+        .params = {}
+#else
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_idle
+    {
+        .nr = SYS_idle,
+        .name = "idle",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_lock
+    {
+        .nr = SYS_lock,
+        .name = "lock",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_lookup_dcookie
+    {
+        .nr = SYS_lookup_dcookie,
+        .name = "lookup_dcookie",
+#ifndef __32BIT__
+        .n_params = 3,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR}
+#else
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_mpx
+    {
+        .nr = SYS_mpx,
+        .name = "mpx",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_multiplexer
+    {
+        .nr = SYS_multiplexer,
+        .name = "multiplexer",
+        .n_params = 6,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_nfsservctl
+    {
+        .nr = SYS_nfsservctl,
+        .name = "nfsservctl",
+        .n_params = 3,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_osf_getitimer
+    {
+        .nr = SYS_osf_getitimer,
+        .name = "osf_getitimer",
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_osf_setitimer
+    {
+        .nr = SYS_osf_setitimer,
+        .name = "osf_setitimer",
+        .n_params = 3,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_osf_shmat
+    {
+        .nr = SYS_osf_shmat,
+        .name = "osf_shmat",
+        .n_params = 3,
+        .params = {INT, CHAR_PTR, INT}
+    },
+#endif
+#ifdef SYS_osf_swapon
+    {
+        .nr = SYS_osf_swapon,
+        .name = "osf_swapon",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_perfctr
+    {
+        .nr = SYS_perfctr,
+        .name = "perfctr",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_perfmonctl
+    {
+        .nr = SYS_perfmonctl,
+        .name = "perfmonctl",
+        .n_params = 6,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_prof
+    {
+        .nr = SYS_prof,
+        .name = "prof",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_profil
+    {
+        .nr = SYS_profil,
+        .name = "profil",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 0,
+        .params = {}
+#else
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_putpmsg
+    {
+        .nr = SYS_putpmsg,
+        .name = "putpmsg",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_query_module
+    {
+        .nr = SYS_query_module,
+        .name = "query_module",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_security
+    {
+        .nr = SYS_security,
+        .name = "security",
+        .n_params = 3,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_setpgrp
+    {
+        .nr = SYS_setpgrp,
+        .name = "setpgrp",
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_set_tls
+    {
+        .nr = SYS_set_tls,
+        .name = "set_tls",
+        .n_params = 1,
+        .params = {VOID_PTR}
+    },
+#endif
+#ifdef SYS_stty
+    {
+        .nr = SYS_stty,
+        .name = "stty",
+#if defined(__mips__) && defined(__32BIT__)
+        .n_params = 0,
+        .params = {}
+#else
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_syscall
+    {
+        .nr = SYS_syscall,
+        .name = "syscall",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_syscall
+    {
+        .nr = SYS_syscall,
+        .name = "syscall",
+        .n_params = 6,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS__sysctl
+    {
+        .nr = SYS__sysctl,
+        .name = "_sysctl",
+        .n_params = 1,
+        .params = {VOID_PTR}
+    },
+#endif
+#ifdef SYS_sys_epoll_create
+    {
+        .nr = SYS_sys_epoll_create,
+        .name = "sys_epoll_create",
+        .n_params = 1,
+        .params = {VOID_PTR}
+    },
+#endif
+#ifdef SYS_sys_epoll_ctl
+    {
+        .nr = SYS_sys_epoll_ctl,
+        .name = "sys_epoll_ctl",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_sys_epoll_wait
+    {
+        .nr = SYS_sys_epoll_wait,
+        .name = "sys_epoll_wait",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_timerfd
+    {
+        .nr = SYS_timerfd,
+        .name = "timerfd",
+        .n_params = 4,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_tuxcall
+    {
+        .nr = SYS_tuxcall,
+        .name = "tuxcall",
+#if defined(__x86_64__) || defined(__32BIT__)
+        .n_params = 3,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR}
+#else
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_ugetrlimit
+    {
+        .nr = SYS_ugetrlimit,
+        .name = "ugetrlimit",
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+    },
+#endif
+#ifdef SYS_ulimit
+    {
+        .nr = SYS_ulimit,
+        .name = "ulimit",
+#ifdef __mips__
+        .n_params = 0,
+        .params = {}
+#else
+        .n_params = 2,
+        .params = {VOID_PTR, VOID_PTR}
+#endif
+    },
+#endif
+#ifdef SYS_umount2
+    {
+        .nr = SYS_umount2,
+        .name = "umount2",
+#ifdef __AVR__
+        .n_params = 1,
+        .params = {CHAR_PTR}
+#else
+        .n_params = 2,
+        .params = {CHAR_PTR, INT}
+#endif
+    },
+#endif
+#ifdef SYS_usr26
+    {
+        .nr = SYS_usr26,
+        .name = "usr26",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_usr32
+    {
+        .nr = SYS_usr32,
+        .name = "usr32",
+        .n_params = 0,
+        .params = {}
+    },
+#endif
+#ifdef SYS_vserver
+    {
+        .nr = SYS_vserver,
+        .name = "vserver",
+        .n_params = 5,
+        .params = {VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR, VOID_PTR}
+    },
+#endif
 // irregular end
 #ifdef SYS_write
     {
