@@ -11,7 +11,7 @@
 
 #include "ctrace.h"
 
-#define DEFAULT_FORMAT "%s(...)"
+#define DEFAULT_FORMAT "%ld(?)"
 
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
 
@@ -43,27 +43,24 @@ static void *read_addr(pid_t pid, uint64_t addr, size_t size) {
     return ((void *) s);
 }
 
-static int parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
+void parse_syscall(pid_t pid, syscall_t *syscall, uint64_t args[6]) {
 
-    int ret = 1;
-    char *s = NULL;
+    fprintf(stderr, "%s(", syscall->name);
 
-    switch (nr) {
-        case SYS_read:
-            s = read_addr(pid, args[1], args[2]);
-            printf("read(%ld, \"%s\", %ld)", args[0], s, args[2]);
-            break;
-        case SYS_write:
-            s = read_addr(pid, args[1], args[2]);
-            printf("write(%ld, \"%s\", %ld)", args[0], s, args[2]);
-            break;
-        default:
-            ret = 0;
+    for (uint8_t i = 0; i < syscall->n_params; i++) {
+        uint64_t val = args[i];
+        switch (syscall->params[i])  {
+            default:
+                fprintf(stderr, "<unimpl>");
+                break;
+        }
+
+        if ((i + 1) != syscall->n_params) {
+            fprintf(stderr, ", ");
+        }
     }
 
-    free(s);
-
-    return ret;
+    fprintf(stderr, ")");
 }
 
 syscall_t *find_syscall(uint64_t nr) {
@@ -89,7 +86,7 @@ int main(int argc, char **argv) {
         execvp(argv[1], (argv + 1));
         perror("exec");
     } else if (pid > 0) {
-        printf("pid: %d\n", pid);
+        fprintf(stderr, "pid: %d\n", pid);
         int status;
         struct __ptrace_syscall_info info;
         size_t size = sizeof(info);
@@ -105,21 +102,25 @@ int main(int argc, char **argv) {
             }
             if (WIFSTOPPED(status)) {
                 safe_ptrace(PTRACE_GET_SYSCALL_INFO, pid, (void *) size, &info);
+                syscall_t *syscall;
                 switch (info.op) {
                     case PTRACE_SYSCALL_INFO_ENTRY:
-                        if (!parse_syscall(pid, info.entry.nr,
-                                    info.entry.args)) {
-                            printf(DEFAULT_FORMAT,
-                                    find_syscall(info.entry.nr)->name);
+                        if (!(syscall = find_syscall(info.entry.nr))) {
+                            fprintf(stderr, DEFAULT_FORMAT, info.entry.nr);
+                        } else {
+                            parse_syscall(pid, syscall, info.entry.args);
                         }
                         break;
                     case PTRACE_SYSCALL_INFO_EXIT:
-                        printf(" = %ld%s\n", info.exit.rval,
+                        fprintf(stderr, " = %ld%s\n", info.exit.rval,
                                 info.exit.is_error ? " [ERR]" : "");
                         break;
                     case PTRACE_SYSCALL_INFO_SECCOMP:
-                        printf(DEFAULT_FORMAT,
-                                find_syscall(info.seccomp.nr)->name);
+                        if (!(syscall = find_syscall(info.seccomp.nr))) {
+                            fprintf(stderr, DEFAULT_FORMAT, info.seccomp.nr);
+                        } else {
+                            parse_syscall(pid, syscall, info.seccomp.args);
+                        }
                         break;
                     default:
                         break;
@@ -128,7 +129,7 @@ int main(int argc, char **argv) {
                 safe_ptrace(PTRACE_SYSCALL, pid, NULL, NULL);
             }
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-        printf("\ntracer exit\n");
+        fprintf(stderr, "\ntracer exit\n");
         return 0;
     } else {
         perror("fork");
