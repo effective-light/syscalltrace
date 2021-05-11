@@ -18,7 +18,6 @@ typedef enum param_types {
     AIO_CONTEXT_T_PTR,
     CAP_USER_DATA_T,
     CAP_USER_HEADER_T,
-    CHAR__PTR,
     CHAR_PTR,
     CHAR_PTR__USER_PTR,
     CLOCKID_T,
@@ -725,7 +724,7 @@ syscall_t syscalls[] = {
         .nr = SYS_fanotify_mark,
         .name = "fanotify_mark",
         .n_params = 5,
-        .params = {INT, UNSIGNED_INT, __U64, INT, CHAR__PTR}
+        .params = {INT, UNSIGNED_INT, __U64, INT, CHAR_PTR}
     },
 #endif
 #ifdef SYS_fchdir
