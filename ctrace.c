@@ -1,4 +1,5 @@
 #include <errno.h>
+#include <inttypes.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,6 +71,21 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
         switch (syscall->params[i])  {
             case INT:
                 __print("%d", (int) val);
+                break;
+            case UINT:
+            case UNSIGNED_INT:
+                __print("%u", (unsigned int) val);
+                break;
+            case UNSIGNED_LONG:
+                __print("%lu", (unsigned long) val);
+                break;
+            case __U32:
+            case U32:
+                __print("%" PRId32, (uint32_t) val);
+                break;
+            case __U64:
+            case U64:
+                __print("%" PRId64, val);
                 break;
             default:
                 __print("<unimpl>");
