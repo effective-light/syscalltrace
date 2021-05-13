@@ -19,7 +19,7 @@ typedef enum param_types {
     CAP_USER_DATA_T,
     CAP_USER_HEADER_T,
     CHAR_PTR,
-    CHAR_PTR__USER_PTR,
+    CHAR_PTR_PTR,
     CLOCKID_T,
     ENUM_PL_CODE,
     FD_SET_PTR,
@@ -625,7 +625,7 @@ syscall_t syscalls[] = {
         .nr = SYS_execve,
         .name = "execve",
         .n_params = 3,
-        .params = {CHAR_PTR, CHAR_PTR__USER_PTR, CHAR_PTR__USER_PTR}
+        .params = {CHAR_PTR, CHAR_PTR_PTR, CHAR_PTR_PTR}
     },
 #endif
 #ifdef SYS_execveat
@@ -633,7 +633,7 @@ syscall_t syscalls[] = {
         .nr = SYS_execveat,
         .name = "execveat",
         .n_params = 5,
-        .params = {INT, CHAR_PTR, CHAR_PTR__USER_PTR, CHAR_PTR__USER_PTR, INT}
+        .params = {INT, CHAR_PTR, CHAR_PTR_PTR, CHAR_PTR_PTR, INT}
     },
 #endif
 #ifdef SYS_exit
@@ -1847,7 +1847,7 @@ syscall_t syscalls[] = {
             UNSIGNED_LONG, OFF_T}
 #else
         .n_params = 6,
-        .params = {UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
+        .params = {VOID_PTR, UNSIGNED_LONG, UNSIGNED_LONG, UNSIGNED_LONG,
             UNSIGNED_LONG, UNSIGNED_LONG}
 #endif
     },

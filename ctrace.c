@@ -87,6 +87,14 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
             case U64:
                 __print("%" PRId64, val);
                 break;
+            case VOID_PTR:
+            case VOID_PTR_PTR:
+                if (!val) {
+                    __print("NULL");
+                } else {
+                    __print("0x%" PRIXPTR, (uintptr_t) val);
+                }
+                break;
             default:
                 __print("<unimpl>");
                 break;
