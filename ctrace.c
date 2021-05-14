@@ -72,6 +72,12 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
             case INT:
                 __print("%d", (int) val);
                 break;
+            case __S32:
+                __print("%" PRId32, (int32_t) val);
+                break;
+            case LONG:
+                __print("%ld", (long) val);
+                break;
             case UINT:
             case UNSIGNED_INT:
                 __print("%u", (unsigned int) val);
@@ -81,18 +87,18 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
                 break;
             case __U32:
             case U32:
-                __print("%" PRId32, (uint32_t) val);
+                __print("%" PRIu32, (uint32_t) val);
                 break;
             case __U64:
             case U64:
-                __print("%" PRId64, val);
+                __print("%" PRIu64, val);
                 break;
             case VOID_PTR:
             case VOID_PTR_PTR:
                 if (!val) {
                     __print("NULL");
                 } else {
-                    __print("0x%" PRIXPTR, (uintptr_t) val);
+                    __print("%#" PRIxPTR, (uintptr_t) val);
                 }
                 break;
             default:
