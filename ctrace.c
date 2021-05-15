@@ -45,6 +45,34 @@ static void *read_addr(pid_t pid, uint64_t addr, size_t size) {
     return ((void *) s);
 }
 
+static char *read_str(pid_t pid, uint64_t addr) {
+    size_t size = sizeof(long);
+    char *buf = calloc(size, sizeof(char));
+    long ret;
+
+    for (size_t i = 0;; i++) {
+        size_t len = i * sizeof(long);
+        ret = safe_ptrace(PTRACE_PEEKDATA, pid, (void *) (addr + len), NULL);
+        if (len >= size) {
+            size *= 2;
+            buf = realloc(buf, size * sizeof(char));
+            if (!buf) {
+                exit(EXIT_FAILURE);
+            }
+        }
+        memcpy((buf + len), &ret, sizeof(long));
+        for (uint8_t j = 0; j < sizeof(long); j++) {
+            char c = *(((char *) &ret) + j);
+            if (!c) {
+                goto END;
+            }
+        }
+    }
+
+END:
+    return buf;
+}
+
 static syscall_t *find_syscall(uint64_t nr) {
     for (size_t i = 0; i < sizeof(syscalls) / sizeof(syscall_t); i++) {
         syscall_t *syscall = (syscalls + i);
