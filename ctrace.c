@@ -86,6 +86,7 @@ static syscall_t *find_syscall(uint64_t nr) {
 
 static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
     syscall_t *syscall = find_syscall(nr);
+    char *s;
 
     if (!syscall) {
         __print(DEFAULT_FORMAT, nr);
@@ -120,6 +121,54 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
             case __U64:
             case U64:
                 __print("%" PRIu64, val);
+                break;
+            case CHAR_PTR:
+                s = read_str(pid, val);
+                __print("\"");
+                for (char *i = s; *i; i++) {
+                    char c = *i;
+                    _Bool escape = 1;
+                    switch (c) {
+                        case '\a':
+                            c = 'a';
+                            break;
+                        case '\b':
+                            c = 'b';
+                            break;
+                        case '\f':
+                            c = 'f';
+                            break;
+                        case '\n':
+                            c = 'n';
+                            break;
+                        case '\r':
+                            c = 'r';
+                            break;
+                        case '\t':
+                            c = 't';
+                            break;
+                        case '\v':
+                            c = 'v';
+                            break;
+                        case 0x1A:
+                            __print("\\0x1a");
+                            goto INNER_LOOP_END;
+                        case 0x1B:
+                            __print("\\0x1b");
+                            goto INNER_LOOP_END;
+                        default:
+                            escape = 0;
+                            break;
+                    }
+                    if (escape) {
+                        __print("\\");
+                    }
+                    __print("%c", c);
+INNER_LOOP_END:
+                    continue;
+                }
+                __print("\"");
+                free(s);
                 break;
             case VOID_PTR:
             case VOID_PTR_PTR:
