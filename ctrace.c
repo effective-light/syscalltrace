@@ -17,6 +17,93 @@
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
 #define __print(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
 
+static _Bool is_struct(param_t param) {
+    switch (param) {
+        case STRUCT___AIO_SIGSET_PTR:
+        case STRUCT_CLONE_ARGS_PTR:
+        case STRUCT_COMPAT_SIGACTION_PTR:
+        case STRUCT_EPOLL_EVENT_PTR:
+        case STRUCT_FILE_HANDLE_PTR:
+        case STRUCT_GETCPU_CACHE_PTR:
+        case STRUCT_GS_CB_PTR:
+        case STRUCT_IOCB_PTR:
+        case STRUCT_IOCB_PTR_PTR:
+        case STRUCT_IO_EVENT_PTR:
+        case STRUCT_IO_URING_PARAMS_PTR:
+        case STRUCT_IOVEC_PTR:
+        case STRUCT___KERNEL_ITIMERSPEC_PTR:
+        case STRUCT___KERNEL_OLD_ITIMERVAL_PTR:
+        case STRUCT___KERNEL_OLD_TIMEVAL_PTR:
+        case STRUCT___KERNEL_TIMESPEC_PTR:
+        case STRUCT___KERNEL_TIMEX_PTR:
+        case STRUCT_KEXEC_SEGMENT_PTR:
+        case STRUCT_LINUX_DIRENT64_PTR:
+        case STRUCT_LINUX_DIRENT_PTR:
+        case STRUCT_MMAP_ARG_STRUCT_PTR:
+        case STRUCT_MMSGHDR_PTR:
+        case STRUCT_MOUNT_ATTR_PTR:
+        case STRUCT_MQ_ATTR_PTR:
+        case STRUCT_MSGBUF_PTR:
+        case STRUCT_MSQID_DS_PTR:
+        case STRUCT_NEW_UTSNAME_PTR:
+        case STRUCT_OLD_ITIMERSPEC32_PTR:
+        case STRUCT___OLD_KERNEL_STAT_PTR:
+        case STRUCT_OLD_LINUX_DIRENT_PTR:
+        case STRUCT_OLDOLD_UTSNAME_PTR:
+        case STRUCT_OLD_SIGACTION_PTR:
+        case STRUCT_OLD_TIMESPEC32_PTR:
+        case STRUCT_OLD_TIMEVAL32_PTR:
+        case STRUCT_OLD_TIMEX32_PTR:
+        case STRUCT_OLD_UTIMBUF32_PTR:
+        case STRUCT_OLD_UTSNAME_PTR:
+        case STRUCT_OPEN_HOW_PTR:
+        case STRUCT_OSF_DIRENT_PTR:
+        case STRUCT_OSF_SIGACTION_PTR:
+        case STRUCT_OSF_STATFS64_PTR:
+        case STRUCT_OSF_STATFS_PTR:
+        case STRUCT_OSF_STAT_PTR:
+        case STRUCT_PERF_EVENT_ATTR_PTR:
+        case STRUCT_POLLFD_PTR:
+        case STRUCT_RLIMIT64_PTR:
+        case STRUCT_RLIMIT_PTR:
+        case STRUCT_ROBUST_LIST_HEAD_PTR:
+        case STRUCT_ROBUST_LIST_HEAD_PTR_PTR:
+        case STRUCT_RSEQ_PTR:
+        case STRUCT_RTAS_ARGS_PTR:
+        case STRUCT_RUSAGE32_PTR:
+        case STRUCT_RUSAGE_PTR:
+        case STRUCT_SCHED_ATTR_PTR:
+        case STRUCT_SCHED_PARAM_PTR:
+        case STRUCT_SEL_ARG_STRUCT_PTR:
+        case STRUCT_SEMBUF_PTR:
+        case STRUCT_SHMID_DS_PTR:
+        case STRUCT_SIGACTION_PTR:
+        case STRUCT_SIG_DBG_OP_PTR:
+        case STRUCT_SIGEVENT_PTR:
+        case STRUCT_SIGINFO_PTR:
+        case STRUCT_SIGSTACK_PTR:
+        case STRUCT_SOCKADDR_PTR:
+        case STRUCT_STAT64_PTR:
+        case STRUCT_STATFS64_PTR:
+        case STRUCT_STATFS_PTR:
+        case STRUCT_STAT_PTR:
+        case STRUCT_STATX_PTR:
+        case STRUCT_SYSINFO_PTR:
+        case STRUCT_TIMEVAL32_PTR:
+        case STRUCT_TIMEX32_PTR:
+        case STRUCT_TIMEZONE_PTR:
+        case STRUCT_TMS_PTR:
+        case STRUCT_UCONTEXT_PTR:
+        case STRUCT_USER_DESC_PTR:
+        case STRUCT_USER_MSGHDR_PTR:
+        case STRUCT_USTAT_PTR:
+        case STRUCT_UTIMBUF_PTR:
+        case STRUCT_VM86_STRUCT_PTR:
+            return 1;
+        default:
+            return 0;
+    }
+}
 
 static long safe_ptrace(enum __ptrace_request request, pid_t pid,
         void *addr, void *data) {
@@ -97,7 +184,11 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
 
     for (uint8_t i = 0; i < syscall->n_params; i++) {
         uint64_t val = args[i];
-        switch (syscall->params[i])  {
+        param_t param = syscall->params[i];
+        if (is_struct(param)) {
+            __print("{");
+        }
+        switch (param)  {
             case INT:
                 __print("%d", (int) val);
                 break;
@@ -181,6 +272,10 @@ INNER_LOOP_END:
             default:
                 __print("<unimpl>");
                 break;
+        }
+
+        if (is_struct(param)) {
+            __print("}");
         }
 
         if ((i + 1) != syscall->n_params) {
