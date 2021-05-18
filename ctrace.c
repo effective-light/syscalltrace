@@ -333,7 +333,13 @@ int main(int argc, char **argv) {
                 safe_ptrace(PTRACE_SYSCALL, pid, NULL, NULL);
             }
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-        __print("\ntracer exit\n");
+        __print("\n--- exited with ");
+        if (WIFEXITED(status)) {
+            __print("%d", WEXITSTATUS(status));
+        } else {
+            __print("?");
+        }
+        __print(" ---\n");
         return 0;
     } else {
         perror("fork");
