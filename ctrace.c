@@ -81,11 +81,8 @@ END:
 }
 
 static syscall_t *find_syscall(uint64_t nr) {
-    for (size_t i = 0; i < sizeof(syscalls) / sizeof(syscall_t); i++) {
-        syscall_t *syscall = (syscalls + i);
-        if (syscall->nr == nr) {
-            return syscall;
-        }
+    if (nr < (sizeof(syscalls) / sizeof(syscall_t))) {
+        return (syscalls + nr);
     }
 
     return NULL;
