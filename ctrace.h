@@ -6,6 +6,8 @@
 
 #include <sys/syscall.h>
 
+#define STRUCT_N_PARAMS_MAX 16
+
 #if INTPTR_MAX == INT32_MAX
 #define __32BIT__
 #elif INTPTR_MAX != INT64_MAX
@@ -169,6 +171,17 @@ typedef struct syscall_s {
     uint8_t n_params;
     param_t params[6];
 } syscall_t;
+
+typedef struct named_param_s {
+    param_t type;
+    char *name;
+} named_param_t;
+
+typedef struct struct_s {
+    char *name;
+    uint8_t n_params;
+    named_param_t params[STRUCT_N_PARAMS_MAX];
+} struct_t;
 
 syscall_t syscalls[] = {
 #ifdef SYS_accept

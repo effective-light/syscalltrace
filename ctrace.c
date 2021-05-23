@@ -88,6 +88,11 @@ static syscall_t *find_syscall(uint64_t nr) {
     return NULL;
 }
 
+static size_t get_size(param_t param) {
+    // TODO: implement
+    return 0;
+}
+
 static void parse_param(pid_t pid, param_t param, uint64_t val) {
     char *s = NULL;
 
