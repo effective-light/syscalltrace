@@ -1,5 +1,5 @@
-#ifndef _CTRACE_H_
-#define _CTRACE_H_
+#ifndef _SYSCALLTRACE_H_
+#define _SYSCALLTRACE_H_
 
 #include <stdint.h>
 #include <unistd.h>
@@ -4798,4 +4798,4 @@ syscall_t syscalls[] = {
 #endif
 };
 
-#endif // _CTRACE_H_
+#endif // _SYSCALLTRACE_H_

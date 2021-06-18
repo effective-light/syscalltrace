@@ -10,7 +10,7 @@
 
 #include <sys/ptrace.h>
 
-#include "ctrace.h"
+#include "syscalltrace.h"
 
 #define DEFAULT_FORMAT "%ld(?)"
 
