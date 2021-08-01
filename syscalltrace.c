@@ -229,7 +229,6 @@ int main(int argc, char **argv) {
         __print("pid: %d\n", pid);
         int status;
         struct __ptrace_syscall_info info;
-        size_t size = sizeof(info);
         if (waitpid(pid, &status, 0) == -1) {
             handle_error("waitpid");
         }
@@ -241,7 +240,8 @@ int main(int argc, char **argv) {
                 handle_error("waitpid");
             }
             if (WIFSTOPPED(status)) {
-                safe_ptrace(PTRACE_GET_SYSCALL_INFO, pid, (void *) size, &info);
+                safe_ptrace(PTRACE_GET_SYSCALL_INFO, pid,
+                        (void *) sizeof(info), &info);
                 switch (info.op) {
                     case PTRACE_SYSCALL_INFO_ENTRY:
                         parse_syscall(pid, info.entry.nr, info.entry.args);
