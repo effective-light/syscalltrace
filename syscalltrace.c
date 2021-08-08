@@ -14,6 +14,7 @@
 
 #define DEFAULT_FORMAT "%ld(?)"
 
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(*arr))
 #define handle_error(msg) { perror(msg); exit(EXIT_FAILURE); }
 #define __print(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
 
@@ -81,7 +82,7 @@ END:
 }
 
 static syscall_t *find_syscall(uint64_t nr) {
-    if (nr < (sizeof(syscalls) / sizeof(syscall_t))) {
+    if (nr < ARRAY_SIZE(syscalls)) {
         return (syscalls + nr);
     }
 
