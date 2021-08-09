@@ -94,6 +94,59 @@ static size_t get_size(param_t param) {
     return 0;
 }
 
+static void print_str(char *s) {
+    __print("\"");
+
+    for (char *i = s; *i; i++) {
+        char c = *i;
+        _Bool escape = 1;
+
+        switch (c) {
+            case '\a':
+                c = 'a';
+                break;
+            case '\b':
+                c = 'b';
+                break;
+            case '\f':
+                c = 'f';
+                break;
+            case '\n':
+                c = 'n';
+                break;
+            case '\r':
+                c = 'r';
+                break;
+            case '\t':
+                c = 't';
+                break;
+            case '\v':
+                c = 'v';
+                break;
+            case 0x1A:
+                __print("\\0x1a");
+                goto INNER_LOOP_END;
+            case 0x1B:
+                __print("\\0x1b");
+                goto INNER_LOOP_END;
+            default:
+                escape = 0;
+                break;
+        }
+
+        if (escape) {
+            __print("\\");
+        }
+
+        __print("%c", c);
+
+INNER_LOOP_END:
+        continue;
+    }
+
+    __print("\"");
+}
+
 static void parse_param(pid_t pid, param_t param, uint64_t val) {
     char *s = NULL;
 
@@ -128,50 +181,7 @@ static void parse_param(pid_t pid, param_t param, uint64_t val) {
             break;
         case CHAR_PTR:
             s = read_str(pid, val);
-            __print("\"");
-            for (char *i = s; *i; i++) {
-                char c = *i;
-                _Bool escape = 1;
-                switch (c) {
-                    case '\a':
-                        c = 'a';
-                        break;
-                    case '\b':
-                        c = 'b';
-                        break;
-                    case '\f':
-                        c = 'f';
-                        break;
-                    case '\n':
-                        c = 'n';
-                        break;
-                    case '\r':
-                        c = 'r';
-                        break;
-                    case '\t':
-                        c = 't';
-                        break;
-                    case '\v':
-                        c = 'v';
-                        break;
-                    case 0x1A:
-                        __print("\\0x1a");
-                        goto INNER_LOOP_END;
-                    case 0x1B:
-                        __print("\\0x1b");
-                        goto INNER_LOOP_END;
-                    default:
-                        escape = 0;
-                        break;
-                }
-                if (escape) {
-                    __print("\\");
-                }
-                __print("%c", c);
-INNER_LOOP_END:
-                continue;
-            }
-            __print("\"");
+            print_str(s);
             break;
         case VOID_PTR:
         case VOID_PTR_PTR:
