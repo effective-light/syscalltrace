@@ -172,16 +172,20 @@ typedef struct syscall_s {
     param_t params[6];
 } syscall_t;
 
-typedef struct named_param_s {
+typedef struct named_member_s {
     param_t type;
     char *name;
-} named_param_t;
+} named_member_t;
 
 typedef struct struct_s {
     char *name;
-    uint8_t n_params;
-    named_param_t params[STRUCT_N_PARAMS_MAX];
+    uint8_t n_members;
+    named_member_t members[STRUCT_N_PARAMS_MAX];
 } struct_t;
+
+struct_t structs[] = {
+    // TODO: fill in
+};
 
 syscall_t syscalls[] = {
 #ifdef SYS_accept
