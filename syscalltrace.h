@@ -1,3 +1,5 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+
 #ifndef _SYSCALLTRACE_H_
 #define _SYSCALLTRACE_H_
 
