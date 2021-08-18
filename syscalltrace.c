@@ -91,15 +91,45 @@ static syscall_t *find_syscall(uint64_t nr) {
     return NULL;
 }
 
-static size_t get_size(param_t param) {
+static size_t get_size(uint64_t nr, uint64_t args[6], param_t param) {
     // TODO: implement
-    return 0;
+    switch (param) {
+        case INT:
+            return sizeof(int);
+        case __S32:
+            return sizeof(int32_t);
+        case LONG:
+            return sizeof(long);
+        case UINT:
+        case UNSIGNED_INT:
+            return sizeof(unsigned int);
+        case UNSIGNED_LONG:
+            return sizeof(unsigned long);
+        case __U32:
+        case U32:
+            return sizeof(uint32_t);
+        case __U64:
+        case U64:
+            return sizeof(uint64_t);
+        case CHAR_PTR:
+            return sizeof(char *);
+        case VOID_PTR:
+            return sizeof(void *);
+        case VOID_PTR_PTR:
+            return sizeof(void **);
+        default:
+            return 1;
+    }
 }
 
-static void print_str(char *s) {
+static void print_str(char *s, size_t size) {
     __print("\"");
 
     for (char *i = s; *i; i++) {
+        if (size && (s + size == i)) {
+            break;
+        }
+
         char c = *i;
         _Bool escape = 1;
 
@@ -149,7 +179,9 @@ INNER_LOOP_END:
     __print("\"");
 }
 
-static void parse_param(pid_t pid, param_t param, uint64_t val) {
+static void parse_param(uint64_t nr, uint64_t args[6],
+        pid_t pid, param_t param, uint64_t val) {
+    size_t size;
     char *s = NULL;
 
     if (is_struct(param)) {
@@ -182,8 +214,13 @@ static void parse_param(pid_t pid, param_t param, uint64_t val) {
             __print("%" PRIu64, val);
             break;
         case CHAR_PTR:
-            s = read_str(pid, val);
-            print_str(s);
+            size = (nr == SYS_write || nr == SYS_read) ? args[2] : 0;
+            if (!size) {
+                s = read_str(pid, val);
+            } else {
+                s = read_addr(pid, val, size);
+            }
+            print_str(s, size);
             break;
         case VOID_PTR:
         case VOID_PTR_PTR:
@@ -217,7 +254,7 @@ static void parse_syscall(pid_t pid, uint64_t nr, uint64_t args[6]) {
     __print("%s(", syscall->name);
 
     for (uint8_t i = 0; i < syscall->n_params; i++) {
-        parse_param(pid, syscall->params[i], args[i]);
+        parse_param(nr, args, pid, syscall->params[i], args[i]);
         if ((i + 1) != syscall->n_params) {
             __print(", ");
         }
