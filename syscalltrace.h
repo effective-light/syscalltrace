@@ -1582,6 +1582,13 @@ syscall_t syscalls[] = {
         .params = {CHAR_PTR, UNSIGNED_INT}
     },
 #endif
+#ifdef SYS_memfd_secret
+    [SYS_memfd_secret] = {
+        .name = "memfd_secret",
+        .n_params = 1,
+        .params = {UNSIGNED_INT}
+    },
+#endif
 #ifdef SYS_memory_ordering
     [SYS_memory_ordering] = {
         .name = "memory_ordering",
